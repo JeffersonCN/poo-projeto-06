@@ -1,15 +1,16 @@
 package com.fatecpg.data;
 
-public class Questao {
+public class Opcao {
     private int id;
     private String texto;
-    //opcoes
-    
-    public Questao(int id, String texto) {
+    private boolean correta;
+
+    public Opcao(int id, String texto, boolean correta) {
         this.setId(id);
         this.setTexto(texto);
+        this.setCorreta(correta);
     }
-
+    
     public int getId() {
         return id;
     }
@@ -25,5 +26,14 @@ public class Questao {
     public void setTexto(String texto) {
         this.texto = texto;
     }
+
+    public boolean isCorreta() {
+        return correta;
+    }
+
+    public void setCorreta(boolean correta) {
+        this.correta = correta;
+    }
+
     
 }
