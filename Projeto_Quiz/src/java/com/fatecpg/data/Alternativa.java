@@ -211,4 +211,15 @@ public class Alternativa {
 
         return false;
     }
+    
+    // ------- RELACIONAMENTO -------------
+    // Retorna a Questão da qual a alternativa pertence
+    public Questao getQuestao() {
+        try {
+            return Questao.find(this._questaoId);
+        } catch (SQLException ex) {
+            System.out.println("Não foi possível carregar a Questão: " + ex.getMessage());
+        }
+        return null;
+    }
 }
