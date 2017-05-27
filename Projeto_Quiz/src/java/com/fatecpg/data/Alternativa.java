@@ -188,4 +188,27 @@ public class Alternativa {
         }
         return false;
     }
+    
+    // ------- DELETE ---------------------
+    // Remove registro do banco de dados
+    public boolean delete() throws SQLException {
+        try (Connection connection = ConnectionFactory.getConnection()) {
+            try (PreparedStatement pstatement = connection.prepareStatement("DELETE FROM ALTERNATIVA WHERE ID = ?")) {
+                pstatement.setInt(1, this._id);
+                pstatement.execute();
+            } catch (Exception ex) {
+                System.out.println("Erro ao excluir a Alternativa: "  + ex.getMessage());
+            }
+            
+            connection.close();
+            
+            if (Alternativa.find(this._id) == null) { 
+                return true;
+            }
+        } catch (Exception ex) {
+            System.out.println("Erro ao obter conexão com o banco de dados: "  + ex.getMessage());
+        }
+
+        return false;
+    }
 }
