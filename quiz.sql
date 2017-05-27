@@ -39,3 +39,10 @@ CREATE TABLE alternativa_partida (
     ,   CONSTRAINT fk_alternativa_id FOREIGN KEY(alternativa_id) REFERENCES alternativa(id)
     ,   CONSTRAINT fk_partida_id FOREIGN KEY(partida_id) REFERENCES partida(id)
 );
+
+-- Insere os tipos de usuário no banco de dados
+INSERT INTO perfil (nome) VALUES ('admin');
+INSERT INTO perfil (nome) VALUES ('jogador');
+
+-- Insere usuário administrador do Quiz
+INSERT INTO USUARIO(NOME, SENHA, PERFIL_ID) VALUES('admin', '1234', 1);
