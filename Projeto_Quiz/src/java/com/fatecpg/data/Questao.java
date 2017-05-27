@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class Questao {
     private Integer _id;
     private String _texto;
-
+    
+    // ### CONSTRUTORES ###
     public Questao(int id, String texto) {
         this._id = id;
         this._texto = texto;
@@ -21,6 +22,7 @@ public class Questao {
         this._texto = texto;
     }
     
+    // ### GETTERS E SETTERS ###
     public int getId() {
         return _id;
     }
@@ -33,7 +35,7 @@ public class Questao {
         this._texto = texto;
     }
     
-    // ------- OPERAÇÕES NO BANCO ---------
+    // ### OPERAÇÕES NO BANCO ###
     // ------- CREATE ---------------------
     public boolean store() throws SQLException {
         try (Connection connection = ConnectionFactory.getConnection()) {
@@ -67,7 +69,7 @@ public class Questao {
     }
     
     // ------- READ -----------------------
-    // Busca uma alternativa pelo ID
+    // Busca uma Questão pelo ID
     public static Questao find(Integer id) throws SQLException {
         try (Connection connection = ConnectionFactory.getConnection()) {
             PreparedStatement pstatement = connection.prepareStatement(String.format("SELECT * FROM QUESTAO WHERE ID = ?"));

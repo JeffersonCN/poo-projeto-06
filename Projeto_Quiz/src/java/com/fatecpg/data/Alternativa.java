@@ -14,7 +14,7 @@ public class Alternativa {
     private boolean _correta;
     private int _questaoId;
     
-    // ------ CONSTRUTORES --------------
+    // ### CONSTRUTORES ###
     public Alternativa(String texto, boolean correta, int questionId) {
         this._texto = texto;
         this._correta = correta;
@@ -28,7 +28,7 @@ public class Alternativa {
         this._questaoId = questionId;
     }
 
-    // ###### GETTERS E SETTERS #######
+    // ### GETTERS E SETTERS ###
     public int getId() {
         return _id;
     }
@@ -57,14 +57,14 @@ public class Alternativa {
         this._questaoId = _questaoId;
     }
 
-    //####### OPERAÇÕES NO BANCO #######
+    // ### OPERAÇÕES NO BANCO ###
     // ------- CREATE ---------------------
     // Insere o registro no banco de dados de acordo com os atributos do objeto
     public boolean store() throws SQLException {
         try (Connection connection = ConnectionFactory.getConnection()) {
             try {
                 Statement statement = connection.createStatement();
-                String SQL = String.format("INSERT INTO ALTERNATIVA(TEXTO, CORRECT, QUESTAO_ID) VALUES('%s', %b, %d)", this._texto, this._correta, this._questaoId);
+                String SQL = String.format("INSERT INTO ALTERNATIVA(TEXTO, CORRETA, QUESTAO_ID) VALUES('%s', %b, %d)", this._texto, this._correta, this._questaoId);
 
                 statement.execute(SQL, Statement.RETURN_GENERATED_KEYS);
 
@@ -99,7 +99,7 @@ public class Alternativa {
                     return new Alternativa(
                             result.getInt("ID"),
                             result.getString("TEXTO"),
-                            result.getBoolean("CORRECT"),
+                            result.getBoolean("CORRETA"),
                             result.getInt("QUESTAO_ID")
                     );
                 }
@@ -127,7 +127,7 @@ public class Alternativa {
                 alternativas.add(new Alternativa(
                         result.getInt("ID"),
                         result.getString("TEXTO"),
-                        result.getBoolean("CORRECT"),
+                        result.getBoolean("CORRETA"),
                         result.getInt("QUESTAO_ID")
                 ));
             }
@@ -150,7 +150,7 @@ public class Alternativa {
                 alternativas.add(new Alternativa(
                         result.getInt("ID"),
                         result.getString("TEXTO"),
-                        result.getBoolean("CORRECT"),
+                        result.getBoolean("CORRETA"),
                         result.getInt("QUESTAO_ID")
                 ));
             }
@@ -168,7 +168,7 @@ public class Alternativa {
             int linhasAlteradas = 0;
             try (Connection connection = ConnectionFactory.getConnection()) {
                 String SQL = String.format(
-                        "UPDATE ALTERNATIVA SET TEXTO = '%s', CORRECT = %b, QUESTAO_ID = %d WHERE ID = %d",
+                        "UPDATE ALTERNATIVA SET TEXTO = '%s', CORRETA = %b, QUESTAO_ID = %d WHERE ID = %d",
                         this._texto,
                         this._correta,
                         this._questaoId,
