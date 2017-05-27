@@ -158,5 +158,15 @@ public class Questao {
         }
 
         return false;
-    }    
+    }
+
+    // ------- RELACIONAMENTO -------------
+    public ArrayList<Alternativa> getAlternativas() {
+        try {
+            return Alternativa.all(this._id);
+        } catch (SQLException ex) {
+            System.out.println("Não foi possível carregar as alternativas: " + ex.getMessage());
+        }
+        return null;
+    }
 }
