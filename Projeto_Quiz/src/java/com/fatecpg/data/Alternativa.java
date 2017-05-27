@@ -137,4 +137,27 @@ public class Alternativa {
 
         return alternativas;
     }
+    
+    // Retorna todas alternativas da Questão informada pelo ID
+    public static ArrayList<Alternativa> all(int questaoId) throws SQLException {
+        ArrayList<Alternativa> alternativas = new ArrayList<>();
+
+        try (Connection connection = ConnectionFactory.getConnection()) {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM ALTERNATIVA WHERE QUESTAO_ID = " + questaoId);
+
+            while (result.next()) {
+                alternativas.add(new Alternativa(
+                        result.getInt("ID"),
+                        result.getString("TEXTO"),
+                        result.getBoolean("CORRECT"),
+                        result.getInt("QUESTAO_ID")
+                ));
+            }
+        } catch (Exception ex) {
+            System.out.println("Erro ao obter conexão com o banco de dados: "  + ex.getMessage());
+        }
+
+        return alternativas;
+    }
 }
