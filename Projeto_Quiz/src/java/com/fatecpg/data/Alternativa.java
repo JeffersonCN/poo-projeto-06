@@ -86,4 +86,32 @@ public class Alternativa {
         }
         return false;
     }
+    
+    // ------- READ -----------------------
+    // Busca uma alternativa pelo ID
+    public static Alternativa find(Integer id) throws SQLException {
+        try (Connection connection = ConnectionFactory.getConnection()) {
+            PreparedStatement pstatement = connection.prepareStatement(String.format("SELECT * FROM ALTERNATIVA WHERE ID = ?"));
+            pstatement.setInt(1, id);
+            
+            try (ResultSet result = pstatement.executeQuery()) {
+                if (result.next()) {
+                    return new Alternativa(
+                            result.getInt("ID"),
+                            result.getString("TEXTO"),
+                            result.getBoolean("CORRECT"),
+                            result.getInt("QUESTAO_ID")
+                    );
+                }
+            } catch (Exception ex) {
+                System.out.println("Erro ao consultar a Alternativa: "  + ex.getMessage());
+            }
+            
+            connection.close();
+        } catch (Exception ex) {
+            System.out.println("Erro ao obter conexão com o banco de dados: "  + ex.getMessage());
+        }
+
+        return null;
+    }
 }
