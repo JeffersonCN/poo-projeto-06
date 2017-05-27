@@ -1,6 +1,6 @@
 CREATE TABLE perfil (
         id INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)
-    ,   nome VARCHAR(32) NOT NULL
+    ,   descricao VARCHAR(32) NOT NULL
 );
 
 CREATE TABLE usuario (
@@ -19,7 +19,7 @@ CREATE TABLE questao (
 CREATE TABLE alternativa (
         id INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)
     ,   texto VARCHAR(255) NOT NULL
-    ,   correct BOOLEAN NOT NULL DEFAULT false
+    ,   correta BOOLEAN NOT NULL DEFAULT false
     ,   questao_id INT NOT NULL
     ,   CONSTRAINT fk_questao_id FOREIGN KEY(questao_id) REFERENCES questao(id)
 );
@@ -41,8 +41,8 @@ CREATE TABLE alternativa_partida (
 );
 
 -- Insere os tipos de usuário no banco de dados
-INSERT INTO perfil (nome) VALUES ('admin');
-INSERT INTO perfil (nome) VALUES ('jogador');
+INSERT INTO perfil (descricao) VALUES ('admin');
+INSERT INTO perfil (descricao) VALUES ('jogador');
 
 -- Insere usuário administrador do Quiz
 INSERT INTO USUARIO(NOME, SENHA, PERFIL_ID) VALUES('admin', '1234', 1);
