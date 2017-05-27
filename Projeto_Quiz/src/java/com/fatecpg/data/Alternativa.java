@@ -160,4 +160,32 @@ public class Alternativa {
 
         return alternativas;
     }
+    
+    // ------- UPDATE ---------------------
+    // Atualiza o registro no banco de acordo com as modificações feitas no objeto
+    public boolean update() throws SQLException {
+        try {
+            int linhasAlteradas = 0;
+            try (Connection connection = ConnectionFactory.getConnection()) {
+                String SQL = String.format(
+                        "UPDATE ALTERNATIVA SET TEXTO = '%s', CORRECT = %b, QUESTAO_ID = %d WHERE ID = %d",
+                        this._texto,
+                        this._correta,
+                        this._questaoId,
+                        this._id
+                );
+                
+                try (Statement statement = connection.createStatement()) {
+                    linhasAlteradas = statement.executeUpdate(SQL);
+                } catch (Exception ex) {
+                    System.out.println("Erro ao atualizar Alternativa: " + ex.getMessage());
+                }
+            }
+            
+            return linhasAlteradas > 0;
+        } catch (SQLException ex) {
+            System.out.println("Erro ao obter conexão com o banco de dados: "  + ex.getMessage());
+        }
+        return false;
+    }
 }
