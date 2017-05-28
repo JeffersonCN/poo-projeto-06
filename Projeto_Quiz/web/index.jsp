@@ -8,7 +8,7 @@
     </head>
     <body>
         <div id="wrapper">
-
+            <%@include file="WEB-INF/jspfs/menu.jspf" %>
             <div id="page-wrapper" class="container" >
                 <div id="page-inner">
                     <div class="row">
