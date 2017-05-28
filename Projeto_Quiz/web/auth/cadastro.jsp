@@ -21,7 +21,7 @@
             Usuario usuario = new Usuario(nome, senha, 2);
 
             try {
-                usuario.store();
+                usuario.store(); 
                 session.setAttribute("nomeUsuario", usuario.getNome());
                 session.setAttribute("senhaUsuario", senha);
                 response.sendRedirect("../index.jsp");

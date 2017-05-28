@@ -1,0 +1,34 @@
+body{
+	margin: 0;
+	background: black;
+	color: white;
+}
+ul{
+	list-style: none;
+	padding: 0;
+	margin-top: 3.4%;
+}
+li{
+	float: left;
+	margin-left: 5%;
+	position: relative;
+}
+span{
+	color: #FFF;
+	display: block;
+	font-weight: bold;
+	margin-top: 1%;
+	text-align: center;
+}
+li:nth-child(even){
+	/*par*/
+	transform: rotate(15deg);
+}
+li:nth-child(odd){
+	/*impar*/
+	transform: rotate(-15deg);
+}
+li:hover{
+	transform: scale(1.3);
+	z-index: 5;
+}
