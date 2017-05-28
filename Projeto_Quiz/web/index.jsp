@@ -1,39 +1,38 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="WEB-INF/css/main.css">
-        <title>Quiz 2.0</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Index</title>
+        <%@include file="WEB-INF/jspfs/links.jspf" %>
     </head>
     <body>
-        <%@include file="WEB-INF/Includes/header.jspf"%>
-        <%@include file="WEB-INF/Includes/header.jspf"%>
-        <div id="centro">
-            <h1>Bem-vindo!</h1>
-            <br>
-            <h3>ste é um Projeto criado para avaliar o seu conhecimento e desempenho, por meio de jogos de entreternimento, neste caso por um QUIZ</h3>
-            <div id="integrantes">
-                <ul>
-                    <li>
-			<img src="">
-			<span>Cesar Cesario</span>
-                    </li>
-                    <li>
-                    	<img src="">
-			<span>Helaman Spadari</span>
-                    </li>
-                    <li>
-			<img src="">
-			<span>Jefferson Cruz</span>
-                    </li>
-                    <li>
-			<img src="">
-			<span>Leonardo Severino</span>
-                    </li>
-		</ul>
+        <div id="wrapper">
+            <nav class="navbar navbar-inverse navbar-cls-top " role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">Quiz: index</a> 
+                </div>
+                <ul class="nav navbar-nav" style="padding-left: 2%;">
+                    <li><a href="#"> Home</a></li>
+                    <li><a href="#">Página</a></li>
+                    <li><a href="#">Página</a></li>
+                </ul>
+            </nav>
+            <div id="page-wrapper" class="container" >
+                <div id="page-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-center">Quiz</h2>   
+                            <h3 class="text-center">Bem vindo ao quiz. </h3>
+                            <p class="text-center">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."  </p>
+                        </div>
+                    </div>              
+                    <hr>
+                  
+                </div>
             </div>
+            <%@include file="WEB-INF/jspfs/footer.jspf" %>
         </div>
-        <%@include file="WEB-INF/Includes/footer.jspf"%>
+        <%@include file="WEB-INF/jspfs/scripts.jspf" %>
     </body>
 </html>
