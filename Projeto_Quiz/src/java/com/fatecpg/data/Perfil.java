@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Perfil {
     private Integer _id;
@@ -160,5 +162,15 @@ public class Perfil {
         }
 
         return false;
+    }
+    
+    // ### RELACIONAMENTOS ###
+    public ArrayList<Usuario> getUsuarios() {
+        try {
+            return Usuario.all(this._id);
+        } catch (SQLException ex) {
+            System.out.println("Erro ao obter Usuários: "  + ex.getMessage());
+        }
+        return null;
     }
 }
