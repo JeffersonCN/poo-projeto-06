@@ -190,4 +190,12 @@ public class Usuario {
     }
 
     // ### RELACIONAMENTOS ###
+    public Perfil getPerfil() {
+        try {
+            return Perfil.find(this._perfilId);
+        } catch (SQLException ex) {
+            System.out.println("Erro ao obter Perfil: "  + ex.getMessage());
+        }
+        return null;
+    }
 }
