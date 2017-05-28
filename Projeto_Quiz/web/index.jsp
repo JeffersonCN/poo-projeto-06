@@ -37,6 +37,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
+                                                    <!--CÓDIGO DE GERAR TABELA-->
                                                 </tr>
                                             </tbody>
                                         </table>
