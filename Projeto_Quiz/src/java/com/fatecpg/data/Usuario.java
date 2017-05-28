@@ -57,6 +57,10 @@ public class Usuario {
     public void setPerfilId(Integer perfilId) {
         this._perfilId = perfilId;
     }
+    
+    public boolean isAdmin(){
+        return this.getPerfil().getDescricao().equals("admin");
+    }
 
     // ### OPERAÇÕES NO BANCO ###
     // ------- CREATE ---------------------
