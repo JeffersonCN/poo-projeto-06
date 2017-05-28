@@ -17,6 +17,45 @@
                     <li><a href="#">Página</a></li>
                     <li><a href="#">Página</a></li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 2%;">
+                    <li><a href="#" data-toggle="modal" data-target="#cadastroModal"><span class="glyphicon glyphicon-user"></span> Cadastre-se</a></li>
+                    <!-- Modal -->
+                    <div id="cadastroModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title text-center">Cadastro</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <!--FORM-->
+                                    <form role="form">
+                                        <br/>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-circle-o-notch"  ></i></span>
+                                            <input type="text" class="form-control" placeholder="Nome" />
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
+                                            <input type="password" class="form-control" placeholder="Senha" />
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
+                                            <input type="password" class="form-control" placeholder="Reescreva a senha" />
+                                        </div>
+                                        <a href="index.html" class="btn btn-success ">Cadastrar</a>
+                                        <hr />
+                                        Já é cadastrado?  <a href="#" data-dismiss="modal" data-target="#loginModal" data-toggle="modal">Faça o Login</a>
+                                    </form>
+                                    <!--/FORM-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--FIM MODAL-->
+                   
+                </ul>
             </nav>
             <div id="page-wrapper" class="container" >
                 <div id="page-inner">
