@@ -100,7 +100,7 @@ public class Perfil {
 
         try (Connection connection = ConnectionFactory.getConnection()) {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM QUESTAO");
+            ResultSet result = statement.executeQuery("SELECT * FROM PERFIL");
 
             while (result.next()) {
                 perfis.add(new Perfil(

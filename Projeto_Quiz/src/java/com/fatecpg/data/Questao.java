@@ -94,7 +94,7 @@ public class Questao {
         return null;
     }
     
-    // Retorn todos os registros
+    // Retorna todos os registros
     public static ArrayList<Questao> all() throws SQLException {
         ArrayList<Questao> questoes = new ArrayList<>();
 
