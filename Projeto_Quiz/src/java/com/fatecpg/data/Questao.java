@@ -121,7 +121,7 @@ public class Questao {
             int linhasAlteradas = 0;
             try (Connection connection = ConnectionFactory.getConnection()) {
                 String SQL = String.format(
-                        "UPDATE ALTERNATIVA SET TEXTO = '%s' WHERE ID = %d",
+                        "UPDATE QUESTAO SET TEXTO = '%s' WHERE ID = %d",
                         this._texto,
                         this._id
                 );
