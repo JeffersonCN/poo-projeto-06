@@ -50,6 +50,7 @@
             </div>
             <%@include file="WEB-INF/jspfs/footer.jspf" %>
         </div>
+        <%@include file="WEB-INF/jspfs/modals.jspf" %>
         <%@include file="WEB-INF/jspfs/scripts.jspf" %>
     </body>
 </html>
