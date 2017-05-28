@@ -115,6 +115,31 @@ public class Perfil {
         return perfis;
     }
     
+    // ------- UPDATE ---------------------
+    public boolean update() throws SQLException {
+        try {
+            int linhasAlteradas = 0;
+            try (Connection connection = ConnectionFactory.getConnection()) {
+                String SQL = String.format(
+                        "UPDATE PERFIL SET DESCRICAO = '%s' WHERE ID = %d",
+                        this._descricao,
+                        this._id
+                );
+                
+                try (Statement statement = connection.createStatement()) {
+                    linhasAlteradas = statement.executeUpdate(SQL);
+                } catch (Exception ex) {
+                    System.out.println("Erro ao atualizar Perfil: " + ex.getMessage());
+                }
+            }
+            
+            return linhasAlteradas > 0;
+        } catch (SQLException ex) {
+            System.out.println("Erro ao obter conexão com o banco de dados: "  + ex.getMessage());
+        }
+        return false;
+    }
+    
     // ------- DELETE ---------------------
     public boolean delete() throws SQLException {   
         try (Connection connection = ConnectionFactory.getConnection()) {
