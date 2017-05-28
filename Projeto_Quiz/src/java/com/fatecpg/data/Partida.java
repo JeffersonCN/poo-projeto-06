@@ -215,4 +215,28 @@ public class Partida {
 
         return false;
     }
+    
+    // ### RELACIONAMENTOS ###
+    public boolean registrarAlternativaEscolhida(int alternativaId) {
+        try (Connection connection = ConnectionFactory.getConnection()) {
+            try (PreparedStatement pstatement = connection.prepareStatement("INSERT INTO ALTERNATIVA_PARTIDA(ALTERNATIVA_ID, PARTIDA_ID) VALUES(?, ?)")) {
+                pstatement.setInt(1, alternativaId);
+                pstatement.setInt(2, this._id);
+                pstatement.execute();
+                
+                pstatement.close();
+                connection.close();
+                
+                return true;
+            } catch (Exception ex) {
+                System.out.println("Erro ao registrar a resposta: " + ex.getMessage());
+            }
+            
+            connection.close();
+        } catch (Exception ex) {
+            System.out.println("Erro ao obter conexão com o banco de dados: " + ex.getMessage());
+        }
+
+        return false;
+    }
 }
