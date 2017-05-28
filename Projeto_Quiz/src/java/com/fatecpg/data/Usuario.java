@@ -69,7 +69,7 @@ public class Usuario {
             try (Statement statement = connection.createStatement()) {
 
                 String SQL = String.format(
-                        "INSERT INTO USUARIO(NOME, PASSWORD, PERFIL_ID) VALUES('%s', '%s', %d)",
+                        "INSERT INTO USUARIO(NOME, SENHA, PERFIL_ID) VALUES('%s', '%s', %d)",
                         this._nome, this._password, this._perfilId);
 
                 statement.execute(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -109,7 +109,7 @@ public class Usuario {
                     return new Usuario(
                             result.getInt("ID"),
                             result.getString("NOME"),
-                            result.getString("PASSWORD"),
+                            result.getString("SENHA"),
                             result.getInt("PERFIL_ID")
                     );
                 }
@@ -137,7 +137,7 @@ public class Usuario {
                 usuarios.add(new Usuario(
                         result.getInt("ID"),
                         result.getString("NOME"),
-                        result.getString("PASSWORD"),
+                        result.getString("SENHA"),
                         result.getInt("PERFIL_ID")
                 ));
             }
@@ -160,7 +160,7 @@ public class Usuario {
                 usuarios.add(new Usuario(
                         result.getInt("ID"),
                         result.getString("NOME"),
-                        result.getString("PASSWORD"),
+                        result.getString("SENHA"),
                         result.getInt("PERFIL_ID")
                 ));
             }
