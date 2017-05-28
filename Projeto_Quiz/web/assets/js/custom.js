@@ -1,14 +1,12 @@
 
-/*=============================================================
-    Authour URI: www.binarycart.com
-    Version: 1.1
-    License: MIT
-    
-    http://opensource.org/licenses/MIT
+function validaSenha (input){ 
+    if (input.value != document.getElementById("senhaCadastro").value) {
+    input.setCustomValidity('Repita a senha corretamente');
+  } else {
+    input.setCustomValidity('');
+  }
+} 
 
-    100% To use For Personal And Commercial Use.
-   
-    ========================================================  */
 
 (function ($) {
     "use strict";
