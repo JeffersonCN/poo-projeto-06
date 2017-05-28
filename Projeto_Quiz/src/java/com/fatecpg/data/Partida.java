@@ -271,4 +271,13 @@ public class Partida {
 
         return alternativas;
     }
+    
+    public void calculaPontuacao() {
+        ArrayList<Alternativa> alternativas = this.getAlternativasEscolhidas();
+        this._pontuacao = 0;
+        
+        for(Alternativa alternativa : alternativas) {
+            this._pontuacao += alternativa.isCorreta() ? 1 : 0;
+        }
+    }
 }
