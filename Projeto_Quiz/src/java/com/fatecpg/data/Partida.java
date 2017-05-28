@@ -239,4 +239,36 @@ public class Partida {
 
         return false;
     }
+    
+    public ArrayList<Alternativa> getAlternativasEscolhidas() {
+        ArrayList<Alternativa> alternativas = null;
+        
+        try (Connection connection = ConnectionFactory.getConnection()) {
+            try (PreparedStatement pstatement = connection.prepareStatement("SELECT ALTERNATIVA_ID FROM ALTERNATIVA_PARTIDA WHERE PARTIDA_ID = ?")) {
+                pstatement.setInt(1, this._id);
+                pstatement.execute();
+                
+                ResultSet result = pstatement.getResultSet();
+                
+                alternativas = new ArrayList<>();
+                
+                if(result.next()) {
+                    alternativas.add(new Alternativa(
+                            result.getString("TEXTO"), 
+                            result.getBoolean("CORRETA"),
+                            result.getInt("QUESTAO_ID")
+                    ));
+                }
+                
+                pstatement.close();
+                connection.close();
+            } catch (Exception ex) {
+                System.out.println("Erro ao consultar as respostas: " + ex.getMessage());
+            }
+        } catch (Exception ex) {
+            System.out.println("Erro ao obter conexão com o banco de dados: " + ex.getMessage());
+        }
+
+        return alternativas;
+    }
 }
