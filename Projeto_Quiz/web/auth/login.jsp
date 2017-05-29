@@ -23,8 +23,7 @@
         ArrayList<Usuario> usuarios = Usuario.all();
         try {
             for (Usuario u : usuarios) {
-                if (Usuario.hasUsername(nomeUsuario) && u.getPassword().equals(usuario.getPassword())) {%>
-    <h1>ESTOU LOGADO</h1><%
+                if (Usuario.hasUsername(nomeUsuario) && u.getPassword().equals(usuario.getPassword())) {
                 userSession.setAttribute("nomeUsuario", usuario.getUsername());
                 userSession.setAttribute("senhaUsuario", senha);
                 response.sendRedirect("../index.jsp");
@@ -37,5 +36,4 @@
     <%throw ex;
         }
     %>
-
 </html>
