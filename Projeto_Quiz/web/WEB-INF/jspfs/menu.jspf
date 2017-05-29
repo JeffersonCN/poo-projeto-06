@@ -4,12 +4,12 @@
     <div class="navbar-header">
         <a class="navbar-brand" href="index.html">Quiz</a> 
     </div>
-    <ul class="nav navbar-nav" style="padding-left: 2%;">
+    <%
+        HttpSession userSession = request.getSession();
+         %><ul class="nav navbar-nav" style="padding-left: 2%;">
         <li><a href="#">Página Inicial</a></li>
-            <%
-                HttpSession userSession = request.getSession();
-                try {
-                    if (userSession.getValue("nomeUsuario") == null || userSession.getValue("senhaUsuario") == null) {%>
+<%try {
+            if (userSession.getValue("nomeUsuario") == null || userSession.getValue("senhaUsuario") == null) {%>
     </ul>
     <ul class="nav navbar-nav navbar-right" style="margin-right: 2%;">
 
@@ -19,7 +19,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right" style="margin-right: 1%;">
         <li class="navbar-text">Bem vindo, <%=session.getValue("nomeUsuario")%></li>
-        <li><a href="admin/questoes/index.jsp"><i class="fa fa-user"></i>Gerenciamento</a></li>
+        <li><a href="index.jsp"><i class="fa fa-user"></i>Gerenciamento</a></li>
         <li><a href="#" data-toggle="modal" data-target="#logoffModal"><i class="fa fa-sign-out"></i> Sair</a></li>
             <%} else {%>
         <li><a href="#">Quiz</a></li>
