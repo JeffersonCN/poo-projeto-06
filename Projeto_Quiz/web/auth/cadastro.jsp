@@ -17,13 +17,17 @@
         <%
             String nome = request.getParameter("nomeCadastro");
             String senha = request.getParameter("senhaCadastro");
-            
+
             Usuario usuario = new Usuario(nome, senha, 2);
-            //usuario.store();
-            
-            session.setAttribute("nomeUsuario", nome);
-            session.setAttribute("senhaUsuario", senha);
-            response.sendRedirect("../index.jsp");
-            %>
+
+            try {
+                usuario.store(); 
+                session.setAttribute("nomeUsuario", usuario.getNome());
+                session.setAttribute("senhaUsuario", senha);
+                response.sendRedirect("../index.jsp");
+            } catch (Exception ex) {%>
+            <h3><%=ex.getMessage()%></h3>
+                <%throw ex;
+            }%>
     </body>
 </html>
