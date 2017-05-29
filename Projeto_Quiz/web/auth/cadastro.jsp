@@ -4,6 +4,7 @@
     Author     : Leonardo
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.fatecpg.data.Perfil"%>
 <%@page import="com.fatecpg.data.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,20 +16,28 @@
     </head>
     <body>
         <%
+            HttpSession userSession = request.getSession();
+
             String nome = request.getParameter("nomeCadastro");
             String senha = request.getParameter("senhaCadastro");
             String nomeUsuario = request.getParameter("nomeUsuarioCadastro");
-
+            userSession.setAttribute("jaCadastrado", false);
             Usuario usuario = new Usuario(nomeUsuario, nome, senha, 2);
 
+            ArrayList<Usuario> usuarios = usuario.all(2);
+
             try {
-                usuario.store(); 
-                session.setAttribute("nomeUsuario", usuario.getNome());
-                session.setAttribute("senhaUsuario", senha);
-                response.sendRedirect("../index.jsp");
-            } catch (Exception ex) {%>
-            <h3><%=ex.getMessage()%></h3>
-                <%throw ex;
+                    if(Usuario.hasUsername(nomeUsuario)){
+                        userSession.setAttribute("jaCadastrado", true);
+                    } else {
+                        usuario.store();
+                        userSession.setAttribute("nomeUsuario", usuario.getNome());
+                        userSession.setAttribute("senhaUsuario", senha);
+                    }
+                    response.sendRedirect("../index.jsp");
+        } catch (Exception ex) {%>
+        <h3><%=ex.getMessage()%></h3>
+        <%throw ex;
             }%>
     </body>
 </html>
