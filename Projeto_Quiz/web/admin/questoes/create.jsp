@@ -104,7 +104,7 @@
     </div>
 </div>
 </div>
-
+<%@include file="../../WEB-INF/jspfs/modals.jspf" %>
 <%@include file="../../WEB-INF/jspfs/footer.jspf" %>
 <%@include file="../../WEB-INF/jspfs/scripts.jspf" %>
 </body>
