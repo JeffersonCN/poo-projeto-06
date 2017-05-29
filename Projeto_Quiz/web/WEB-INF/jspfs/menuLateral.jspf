@@ -9,7 +9,7 @@
                         <li>
                             <a class="active-menu"  href="index,jsp"><i class="fa fa-dashboard fa-3x"></i> Painel</a>
                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-3x"></i> Usuários<span class="fa arrow"></span></a>
+                            <a href="#"<i class="fa fa-users lg"</i> Usuários<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="#">Criar</a>
@@ -29,7 +29,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                            <a href="#"><i class="fa fa-sitemap fa-3x"></i> Questões<span class="fa arrow"></span></a>
+                            <a href="#"<i class="fa fa-list lg" ></i> Questões<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="create.jsp">Criar</a>
