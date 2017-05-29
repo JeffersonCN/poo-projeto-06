@@ -12,41 +12,59 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file="../../WEB-INF/jspfs/links.jspf" %>
         <title></title>
     </head>
     <body>
-        <%
-            HttpSession userSession = request.getSession();
-            String mensagem = (String) userSession.getAttribute("mensagem");
+        <%@include file="../../WEB-INF/jspfs/menu.jspf" %>
+        <div id="wrapper">
+            <%@include file="../../WEB-INF/jspfs/menuLateral.jspf"%>
+            <div id="page-wrapper" class="container">
+                <div id="page-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-center">Painel do Administrador</h2>   
+                            <h5 class="text-center">Bem vindo, Admnistrador. </h5>
+                            <%
+                                String mensagem = (String) userSession.getAttribute("mensagem");
 
-            if (mensagem != null) {
-        %>
-        <p><%=mensagem%></p>
-        <%
-            }
+                                if (mensagem != null) {
+                            %>
+                            <p><%=mensagem%></p>
+                            <%
+                                }
 
-            ArrayList<Questao> questoes = Questao.all();
+                                ArrayList<Questao> questoes = Questao.all();
 
-            for (Questao questao : questoes) {
-        %>
-        <p>
-            Questao: <%= questao.getTexto()%><br>
-        <ol>
-            <%
-                for (Alternativa alternativa : questao.getAlternativas()) {
-            %>
-            <li>
-                <%= alternativa.getTexto()%>
-            </li>
-            <%
-                }
-            %>
-        </ol>
-    </p>
-    <%
-        }
+                                for (Questao questao : questoes) {
+                            %>
+                            <p>
+                                Questao: <%= questao.getTexto()%><br>
+                            <ol>
+                                <%
+                                    for (Alternativa alternativa : questao.getAlternativas()) {
+                                %>
+                                <li>
+                                    <%= alternativa.getTexto()%>
+                                </li>
+                                <%
+                                    }
+                                %>
+                            </ol>
+                            </p>
+                            <%
+                                }
+                                userSession.removeAttribute("mensagem");
+                            %>
+                        </div>
+                    </div>              
+                </div>
+            </div>     
+        </div>
+    </div>
+</div>
 
-        userSession.removeAttribute("mensagem");
-    %>
+<%@include file="../../WEB-INF/jspfs/footer.jspf" %>
+<%@include file="../../WEB-INF/jspfs/scripts.jspf" %>
 </body>
 </html>
