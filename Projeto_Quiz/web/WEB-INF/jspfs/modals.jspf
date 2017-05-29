@@ -26,7 +26,7 @@
                     </div>
                     <button type="submit" class="btn btn-success ">Cadastrar</button>
                     <hr/>
-                    Já é cadastrado?  <a href="#" data-dismiss="modal" data-target="#loginModal" data-toggle="modal">Faça o Login</a>-->
+                    Já é cadastrado?  <a href="#" data-dismiss="modal" data-target="#loginModal" data-toggle="modal">Faça o Login</a>
                 </form>
             </div>
         </div>
