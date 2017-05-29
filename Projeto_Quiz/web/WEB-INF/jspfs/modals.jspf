@@ -17,6 +17,10 @@
                         <input type="text" class="form-control" name="nomeCadastro" placeholder="Nome" required />
                     </div>
                     <div class="form-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-circle-o-notch"  ></i></span>
+                        <input type="text" class="form-control" name="nomeUsuarioCadastro" placeholder="Nome de usuário" required />
+                    </div>
+                    <div class="form-group input-group">
                         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                         <input type="password" class="form-control" name="senhaCadastro" id="senhaCadastro" placeholder="Senha" required />
                     </div>
@@ -46,7 +50,7 @@
                     <br />
                     <div class="form-group input-group">
                         <span class="input-group-addon"><i class="fa fa-circle-o-notch"  ></i></span>
-                        <input type="text" class="form-control" placeholder="Nome " name="nomeLogin" required />
+                        <input type="text" class="form-control" placeholder="Nome de usuário " name="usernameLogin" required />
                     </div>
                     <div class="form-group input-group">
                         <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
