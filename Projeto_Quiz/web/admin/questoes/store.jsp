@@ -17,33 +17,45 @@
     <body>
         <%
             request.setCharacterEncoding("utf-8");
-            ArrayList<String> erros = new ArrayList<>();
+            HttpSession userSession = request.getSession();
+
+            String mensagem = null;
 
             String textoQuestao = request.getParameter("txtQuestao");
-            Questao questao = new Questao(textoQuestao);
 
-            try {
-                questao.store();
-            } catch (Exception ex) {
-                erros.add("Erro ao criar a Questão. Tente novamente.");
-            }
+            if (textoQuestao != null && !textoQuestao.equals("")) {
+                Questao questao = new Questao(textoQuestao);
 
-            try {
-                Integer correta = Integer.parseInt(request.getParameter("correta"));
+                try {
+                    questao.store();
+                } catch (Exception ex) {
+                    mensagem = "Erro ao gravar a Questão. Tente novamente.";
+                }
 
-                if (questao.getId() != null) {
+                Integer correta = null;
+                try {
+                    correta = Integer.parseInt(request.getParameter("correta"));
+                } catch (Exception e) {
+                    mensagem = "É necessário informar qual alternativa é a correta.";
+                    questao.delete();
+                }
+                
+                if (questao.getId() != null && correta != null) {
                     ArrayList<Alternativa> alternativas = new ArrayList<>();
-                    String txtAlternativa;
+                    String txtAlternativa = null;
 
                     for (int i = 0; i < 4; i++) {
                         txtAlternativa = request.getParameter(String.format("alternativa[%d]", i));
-                        alternativas.add(
-                                new Alternativa(
-                                        txtAlternativa,
-                                        correta == i,
-                                        questao.getId()
-                                )
-                        );
+
+                        if (txtAlternativa != null) {
+                            alternativas.add(
+                                    new Alternativa(
+                                            txtAlternativa,
+                                            correta == i,
+                                            questao.getId()
+                                    )
+                            );
+                        }
                     }
 
                     try {
@@ -51,15 +63,16 @@
                             alternativa.store();
                         }
                     } catch (Exception e) {
-                        erros.add("Erro ao criar as Alternativas. Tente novamente.");
+                        mensagem = "Erro ao gravar as Alternativas. Tente novamente.";
+                        questao.delete();
                     }
                 }
-            } catch (Exception e) {
-                erros.add("Erro ao ler alternativa correta");
+            } else {
+                mensagem = "Texto da questão não pode estar vazio.";
             }
-            
-            session.setAttribute("erros", erros);
-            
+
+            userSession.setAttribute("mensagem", mensagem != null ? mensagem : "Questão cadastrada com sucesso");
+
             response.sendRedirect("index.jsp");
         %>
     </body>
