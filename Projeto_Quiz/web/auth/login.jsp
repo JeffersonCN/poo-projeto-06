@@ -26,8 +26,13 @@
                 if (Usuario.hasUsername(nomeUsuario) && u.getPassword().equals(usuario.getPassword())) {
                 userSession.setAttribute("nomeUsuario", usuario.getUsername());
                 userSession.setAttribute("senhaUsuario", senha);
-                response.sendRedirect("../index.jsp");
-                break;
+                if(nomeUsuario.equalsIgnoreCase("admin") && senha.equals("1234") ){
+                    response.sendRedirect("../admin/questoes/index.jsp");
+                    break;
+                }else{
+                    response.sendRedirect("../index.jsp");
+                    break;
+                }
             } else {
             }
         }
