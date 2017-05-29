@@ -5,19 +5,24 @@
         <a class="navbar-brand" href="index.html">Quiz: index</a> 
     </div>
     <ul class="nav navbar-nav" style="padding-left: 2%;">
-        <li><a href="#"> Home</a></li>
-        <li><a href="#">Página</a></li>
-        <li><a href="#">Página</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right" style="margin-right: 2%;">
+        <li><a href="#">Página Inicial</a></li>
         <%
             try {
                 if (session.getValue("nomeUsuario") == null || session.getValue("senhaUsuario") == null) {
         %>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" style="margin-right: 2%;">
+
         <li><a href="#" data-toggle="modal" data-target="#cadastroModal"><span class="glyphicon glyphicon-user"></span> Cadastre-se</a></li>
         <li><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             <%} else {%>
-        <li><a href="#" data-toggle="modal" data-target="#logoffModal"><span class="glyphicon glyphicon-user"></span> Sair</a></li>
+        <li><a href="#">Quiz</a></li>
+        <li><a href="#">Histórico</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" style="margin-right: 1%;">
+        <li class="navbar-text">Bem vindo, <%=session.getValue("nomeUsuario")%></li>
+        <li><a href="#"><i class="fa fa-user"></i>Perfil</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#logoffModal"><i class="fa fa-sign-out"></i> Sair</a></li>
             <%}
             } catch (Exception ex) {%>
         <h3>Erro: <%= ex.getMessage()%></h3>
