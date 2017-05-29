@@ -7,14 +7,15 @@
     <ul class="nav navbar-nav" style="padding-left: 2%;">
         <li><a href="#">Página Inicial</a></li>
         <%
+            HttpSession userSession = request.getSession();
             try {
-                if (session.getValue("nomeUsuario") == null || session.getValue("senhaUsuario") == null) {
+                if (userSession.getValue("nomeUsuario") == null || userSession.getValue("senhaUsuario") == null) {
         %>
     </ul>
     <ul class="nav navbar-nav navbar-right" style="margin-right: 2%;">
 
-        <li><a href="#" data-toggle="modal" data-target="#cadastroModal"><span class="glyphicon glyphicon-user"></span> Cadastre-se</a></li>
-        <li><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#cadastroModal"><i class="fa fa-user"></i> Cadastre-se</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-sign-in"></i> Login</a></li>
             <%} else {%>
         <li><a href="#">Quiz</a></li>
         <li><a href="#">Histórico</a></li>
