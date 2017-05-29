@@ -23,7 +23,7 @@ public class Questao {
     }
     
     // ### GETTERS E SETTERS ###
-    public int getId() {
+    public Integer getId() {
         return _id;
     }
 
@@ -152,7 +152,7 @@ public class Questao {
             
             connection.close();
             
-            if (Alternativa.find(this._id) == null) { 
+            if (Questao.find(this._id) == null) { 
                 return true;
             }
         } catch (Exception ex) {
