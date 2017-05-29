@@ -189,6 +189,33 @@ public class Usuario {
 
         return usuarios;
     }
+    
+    // ------- UPDATE ---------------------
+    public boolean update() throws SQLException {
+        try {
+            int linhasAlteradas = 0;
+            try (Connection connection = ConnectionFactory.getConnection()) {
+                String SQL = String.format(
+                        "UPDATE USUARIO SET NOME = '%s', USERNAME = '%s', PERFIL_ID = %d WHERE ID = %d",
+                        this._nome,
+                        this._username,
+                        this._perfilId,
+                        this._id
+                );
+                
+                try (Statement statement = connection.createStatement()) {
+                    linhasAlteradas = statement.executeUpdate(SQL);
+                } catch (Exception ex) {
+                    System.out.println("Erro ao atualizar Usuário: " + ex.getMessage());
+                }
+            }
+            
+            return linhasAlteradas > 0;
+        } catch (SQLException ex) {
+            System.out.println("Erro ao obter conexão com o banco de dados: "  + ex.getMessage());
+        }
+        return false;
+    }
 
     // ------- DELETE ---------------------
     public boolean delete() throws SQLException {
