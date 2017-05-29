@@ -6,16 +6,21 @@
     </div>
     <ul class="nav navbar-nav" style="padding-left: 2%;">
         <li><a href="#">Página Inicial</a></li>
-        <%
-            HttpSession userSession = request.getSession();
-            try {
-                if (userSession.getValue("nomeUsuario") == null || userSession.getValue("senhaUsuario") == null) {
-        %>
+            <%
+                HttpSession userSession = request.getSession();
+                try {
+                    if (userSession.getValue("nomeUsuario") == null || userSession.getValue("senhaUsuario") == null) {%>
     </ul>
     <ul class="nav navbar-nav navbar-right" style="margin-right: 2%;">
 
         <li><a href="#" data-toggle="modal" data-target="#cadastroModal"><i class="fa fa-user"></i> Cadastre-se</a></li>
         <li><a href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-sign-in"></i> Login</a></li>
+            <%} else if (userSession.getValue("nomeUsuario").equals("admin") && userSession.getValue("senhaUsuario").equals("1234")) {%>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" style="margin-right: 1%;">
+        <li class="navbar-text">Bem vindo, <%=session.getValue("nomeUsuario")%></li>
+        <li><a href="admin/questoes/index.jsp"><i class="fa fa-user"></i>Gerenciamento</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#logoffModal"><i class="fa fa-sign-out"></i> Sair</a></li>
             <%} else {%>
         <li><a href="#">Quiz</a></li>
         <li><a href="#">Histórico</a></li>
