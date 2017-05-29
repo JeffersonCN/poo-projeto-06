@@ -206,6 +206,29 @@ public class Usuario {
 
         return false;
     }
+    
+    public static boolean hasUsername(String username) {
+        try (Connection connection = ConnectionFactory.getConnection()) {
+            try (PreparedStatement pstatement = connection.prepareStatement("SELECT * FROM USUARIO WHERE USERNAME = ?")) {
+                pstatement.setString(1, username);
+                pstatement.execute();
+                
+                ResultSet rs = pstatement.getResultSet();
+                
+                if (rs.next()) {
+                    return true;
+                } 
+            } catch (Exception ex) {
+                System.out.println("Erro ao buscar usuário: " + ex.getMessage());
+            }
+            
+            connection.close();
+        } catch (Exception ex) {
+            System.out.println("Erro ao obter conexão com o banco de dados: " + ex.getMessage());
+        }
+
+        return false;
+    }
 
     // ### RELACIONAMENTOS ###
     public Perfil getPerfil() {
