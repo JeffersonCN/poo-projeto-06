@@ -11,7 +11,8 @@
     </head>
     <body>
         <%
-            session.invalidate();
+            HttpSession userSession = request.getSession();
+            userSession.invalidate();
             response.sendRedirect("../index.jsp");
             %>
     </body>
