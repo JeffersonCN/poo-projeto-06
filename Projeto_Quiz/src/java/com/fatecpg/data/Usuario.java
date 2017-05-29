@@ -31,6 +31,11 @@ public class Usuario {
         this._password = password;
         this._perfilId = perfilId;
     }
+    
+    public Usuario(String username, String password){
+        this._username = username;
+        this._password = password;
+    }
 
     // ### GETTERS E SETTERS
     public Integer getId() {
