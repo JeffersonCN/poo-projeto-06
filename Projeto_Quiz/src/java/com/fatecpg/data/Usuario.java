@@ -12,20 +12,23 @@ public class Usuario {
 
     private Integer _id;
     private String _nome;
+    private String _username;
     private String _password;
     private Integer _perfilId;
 
     // ### CONSTRUTORES ###
-    public Usuario(Integer _id, String _nome, String _password, Integer perfilId) {
-        this._id = _id;
-        this._nome = _nome;
-        this._password = _password;
+    public Usuario(Integer id, String username, String nome, String password, Integer perfilId) {
+        this._id = id;
+        this._username = username;
+        this._nome = nome;
+        this._password = password;
         this._perfilId = perfilId;
     }
 
-    public Usuario(String _nome, String _password, Integer perfilId) {
-        this._nome = _nome;
-        this._password = _password;
+    public Usuario(String username, String nome, String password, Integer perfilId) {
+        this._username = username;
+        this._nome = nome;
+        this._password = password;
         this._perfilId = perfilId;
     }
 
@@ -38,11 +41,19 @@ public class Usuario {
         return _nome;
     }
 
+    public String getUsername() {
+        return _username;
+    }
+
+    public void setUsername(String _username) {
+        this._username = _username;
+    }
+
     public void setNome(String _nome) {
         this._nome = _nome;
     }
 
-    private String getPassword() {
+    public String getPassword() {
         return _password;
     }
 
@@ -57,8 +68,8 @@ public class Usuario {
     public void setPerfilId(Integer perfilId) {
         this._perfilId = perfilId;
     }
-    
-    public boolean isAdmin(){
+
+    public boolean isAdmin() {
         return this.getPerfil().getDescricao().equals("admin");
     }
 
@@ -69,8 +80,8 @@ public class Usuario {
             try (Statement statement = connection.createStatement()) {
 
                 String SQL = String.format(
-                        "INSERT INTO USUARIO(NOME, SENHA, PERFIL_ID) VALUES('%s', '%s', %d)",
-                        this._nome, this._password, this._perfilId);
+                        "INSERT INTO USUARIO(USERNAME, NOME, SENHA, PERFIL_ID) VALUES('%s', '%s', '%s', %d)",
+                        this._username, this._nome, this._password, this._perfilId);
 
                 statement.execute(SQL, Statement.RETURN_GENERATED_KEYS);
 
@@ -108,6 +119,7 @@ public class Usuario {
                 if (result.next()) {
                     return new Usuario(
                             result.getInt("ID"),
+                            result.getString("USERNAME"),
                             result.getString("NOME"),
                             result.getString("SENHA"),
                             result.getInt("PERFIL_ID")
@@ -136,6 +148,7 @@ public class Usuario {
             while (result.next()) {
                 usuarios.add(new Usuario(
                         result.getInt("ID"),
+                        result.getString("USERNAME"),
                         result.getString("NOME"),
                         result.getString("SENHA"),
                         result.getInt("PERFIL_ID")
@@ -147,18 +160,19 @@ public class Usuario {
 
         return usuarios;
     }
-    
+
     // Retorn todos os usuários de um perfil
     public static ArrayList<Usuario> all(int perfilId) throws SQLException {
         ArrayList<Usuario> usuarios = new ArrayList<>();
 
         try (Connection connection = ConnectionFactory.getConnection()) {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM USUARIO WHERE PERFIL_ID = " + perfilId );
+            ResultSet result = statement.executeQuery("SELECT * FROM USUARIO WHERE PERFIL_ID = " + perfilId);
 
             while (result.next()) {
                 usuarios.add(new Usuario(
                         result.getInt("ID"),
+                        result.getString("USERNAME"),
                         result.getString("NOME"),
                         result.getString("SENHA"),
                         result.getInt("PERFIL_ID")
@@ -198,7 +212,7 @@ public class Usuario {
         try {
             return Perfil.find(this._perfilId);
         } catch (SQLException ex) {
-            System.out.println("Erro ao obter Perfil: "  + ex.getMessage());
+            System.out.println("Erro ao obter Perfil: " + ex.getMessage());
         }
         return null;
     }
