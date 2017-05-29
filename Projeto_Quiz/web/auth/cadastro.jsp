@@ -17,8 +17,9 @@
         <%
             String nome = request.getParameter("nomeCadastro");
             String senha = request.getParameter("senhaCadastro");
+            String nomeUsuario = request.getParameter("nomeUsuarioCadastro");
 
-            Usuario usuario = new Usuario(nome, senha, 2);
+            Usuario usuario = new Usuario(nomeUsuario, nome, senha, 2);
 
             try {
                 usuario.store(); 
