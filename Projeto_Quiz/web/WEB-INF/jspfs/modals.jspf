@@ -1,4 +1,5 @@
 <%-- any content can be specified here e.g.: --%>
+<%@page import="br.com.fatecpg.helpers.ServerHelpers"%>
 <%@ page pageEncoding="UTF-8" %>
 <!--MODAL DE CADASTRO-->
 <div id="cadastroModal" class="modal fade" role="dialog">
@@ -78,7 +79,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn btn-success ">Cancelar</a>
-                <a href="auth/logoff.jsp" class="btn btn-danger ">Sair</a>
+                <a href="<%=ServerHelpers.getRootPath(request)%>/auth/logoff.jsp" class="btn btn-danger ">Sair</a>
             </div>
         </div>
     </div>
