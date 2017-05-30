@@ -24,15 +24,14 @@
             userSession.setAttribute("jaCadastrado", false);
             Usuario usuario = new Usuario(nomeUsuario, nome, senha, 2);
 
-            ArrayList<Usuario> usuarios = usuario.all(2);
+            ArrayList<Usuario> usuarios = usuario.all();
 
             try {
                     if(Usuario.hasUsername(nomeUsuario)){
                         userSession.setAttribute("jaCadastrado", true);
                     } else {
                         usuario.store();
-                        userSession.setAttribute("nomeUsuario", usuario.getNome());
-                        userSession.setAttribute("senhaUsuario", senha);
+                        userSession.setAttribute("usuarioLogado", usuario);
                     }
                     response.sendRedirect("../index.jsp");
         } catch (Exception ex) {%>
