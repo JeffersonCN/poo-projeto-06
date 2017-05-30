@@ -1,4 +1,4 @@
-Ôªø<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -16,36 +16,36 @@
                             <h2 class="text-center">Quiz</h2>   
                             <h3 class="text-center">Bem vindo ao quiz. </h3>
                             <p class="text-center">
-                                Este √© um site de quiz,
-                                focado em entretenimento e desconstra√ß√£o fa√ßa j√° seu login e divirt√°-se!
+                                Este È um Quiz, onde vocÍ pode se divertir e dar muita risada.
+                                Crie sua conta agora e participe, e tente ficar em primeiro no <br><span style="font-size: 35px; color:red;"><b>Ranking</b>!</span>
                             </p>
                             <center>
                                 <div class="container text-center">
                                     <h3><b>Integrantes da Equipe</b></h3>
                                     <p>Jefferson Nascimento</p>
-                                        <p>Respons√°vel por:</br>
-                                            Cria√ß√£o do banco de dados;</br>
-                                            Implementa√ß√£o do CRUD;</br>
-                                            Implementa√ß√£o de gerenciamento de quest√µes e usu√°rios.</br>
+                                        <p>Respons·vel por:</br>
+                                            CriaÁ„o do banco de dados;</br>
+                                            ImplementaÁ„o do CRUD;</br>
+                                            ImplementaÁ„o de gerenciamento de questıes e usu·rios.</br>
                                         </p>
                                     <p>Leonardo Santos</p>
-                                        <p>Respons√°vel por:</br>
-                                            Suporte na cria√ß√£o do banco de dados;</br>
-                                            Implementa√ß√£o do logoff por parte do administrador;<br>
-                                            Implementa√ß√£o de autentica√ß√£o de usu√°rio.<br>
+                                        <p>Respons·vel por:</br>
+                                            Suporte na criaÁ„o do banco de dados;</br>
+                                            ImplementaÁ„o do logoff por parte do administrador;<br>
+                                            ImplementaÁ„o de autenticaÁ„o de usu·rio.<br>
                                         </p>
                                     <p>Helaman Spadari</p>
-                                        <p>Respons√°vel por:</br>
-                                            Implemta√ß√£o do link da index ao css;</br>
-                                            Cria√ß√£o da pasta includes;</br>
-                                            Adi√ß√£o dos includes nas p√°ginas.</br>
+                                        <p>Respons·vel por:</br>
+                                            ImplemtaÁ„o do link da index ao css;</br>
+                                            CriaÁ„o da pasta includes;</br>
+                                            AdiÁ„o dos includes nas p·ginas.</br>
                                         </p>
                                      
                                         <p>Cesar Cesario<p>
-                                        <p>Respons√°vel por:</br>
-                                            Conte√∫do sobre a equipe na index principal;</br>
-                                            Pesquisa de campo sobre perguntas do question√°rio;</br>
-                                            Identa√ß√£o e verifica√ß√£o de erros no codigo;</br>
+                                        <p>Respons·vel por:</br>
+                                            Conte˙do sobre a equipe na index principal;</br>
+                                            Pesquisa de campo sobre perguntas do question·rio;</br>
+                                            IdentaÁ„o e verificaÁ„o de erros no codigo;</br>
                                             Feedback de teste do projeto.</br>
                                         </p>
                                 </div>
@@ -65,13 +65,13 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Pontua√ß√£o</th>
+                                                    <th>PontuaÁ„o</th>
                                                     <th>Nome</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <!--C√ìDIGO DE GERAR TABELA-->
+                                                    <!--C”DIGO DE GERAR TABELA-->
                                                 </tr>
                                             </tbody>
                                         </table>
