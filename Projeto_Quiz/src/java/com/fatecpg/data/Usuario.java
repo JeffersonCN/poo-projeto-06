@@ -141,6 +141,34 @@ public class Usuario {
 
         return null;
     }
+    
+    //Busca um Usuário pelo Username
+    public static Usuario findByUsername(String username) throws SQLException {
+        try (Connection connection = ConnectionFactory.getConnection()) {
+            PreparedStatement pstatement = connection.prepareStatement(String.format("SELECT * FROM USUARIO WHERE USERNAME = ?"));
+            pstatement.setString(1, username);
+
+            try (ResultSet result = pstatement.executeQuery()) {
+                if (result.next()) {
+                    return new Usuario(
+                            result.getInt("ID"),
+                            result.getString("USERNAME"),
+                            result.getString("NOME"),
+                            result.getString("SENHA"),
+                            result.getInt("PERFIL_ID")
+                    );
+                }
+            } catch (Exception ex) {
+                System.out.println("Erro ao consultar o Usuário: " + ex.getMessage());
+            }
+
+            connection.close();
+        } catch (Exception ex) {
+            System.out.println("Erro ao obter conexão com o banco de dados: " + ex.getMessage());
+        }
+
+        return null;
+    }
 
     // Retorn todos os registros
     public static ArrayList<Usuario> all() throws SQLException {
