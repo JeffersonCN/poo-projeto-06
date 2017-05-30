@@ -15,7 +15,7 @@
                         <div class="col-md-12">
                             <h2 class="text-center">Quiz</h2>   
                             <h3 class="text-center">Bem vindo ao quiz. </h3>
-                            <p class="text-center">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."  </p>
+                            <p class="text-center">Este é um site de quiz, focado em entretenimento e desconstração faça já seu login e divirtá-se!  </p>
                         </div>
                     </div>              
                     <hr>
