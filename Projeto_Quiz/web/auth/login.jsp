@@ -23,18 +23,19 @@
         ArrayList<Usuario> usuarios = Usuario.all();
         try {
             for (Usuario u : usuarios) {
-                if (Usuario.hasUsername(nomeUsuario) && u.getPassword().equals(usuario.getPassword())) {
+                if (Usuario.jaCadastrado(nomeUsuario, senha)) {
                 userSession.setAttribute("nomeUsuario", usuario.getUsername());
                 userSession.setAttribute("senhaUsuario", senha);
                 if(nomeUsuario.equalsIgnoreCase("admin") && senha.equals("1234") ){
+                    userSession.setAttribute("nomeUsuario", usuario.getUsername());
+                    userSession.setAttribute("senhaUsuario", senha);
                     response.sendRedirect("../admin/questoes/index.jsp");
                     break;
                 }else{
                     response.sendRedirect("../index.jsp");
                     break;
                 }
-            } else {
-            }
+            } 
         }
     } catch (Exception ex) {%>
     <h3>ERRO:<%=ex.getMessage()%></h3>
