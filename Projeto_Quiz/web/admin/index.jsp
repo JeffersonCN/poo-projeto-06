@@ -4,6 +4,7 @@
     Author     : Cesar
 --%>
 
+<%@page import="br.com.fatecpg.helpers.ServerHelpers"%>
 <%@page import="com.fatecpg.data.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,8 +17,8 @@
         <%
             HttpSession userSession = request.getSession();
             Usuario usuarioLogado = (Usuario)userSession.getValue("usuarioLogado");
-            if (usuarioLogado == null || !usuarioLogado.getUsername().equalsIgnoreCase("admin")) {
-                response.sendRedirect("index.jsp");
+            if(ServerHelpers.isAdminLogged(usuarioLogado) == false){
+                response.sendRedirect(ServerHelpers.getRootPath(request)+"/index.jsp");
             }
         %>
         <h1>Hello World!</h1>
