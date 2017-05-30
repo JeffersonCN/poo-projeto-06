@@ -26,10 +26,10 @@ public class ServerHelpers {
     }
     
     public static boolean isAdminLogged(Usuario usuario){
-        if (!usuario.getUsername().equals("admin")){
-            return false;
-        } else{
+        if (usuario != null && usuario.getUsername().equals("admin")){
             return true;
+        } else{
+            return false;
         }
     }
 }
