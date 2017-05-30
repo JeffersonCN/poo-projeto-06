@@ -16,6 +16,8 @@
                             <h2 class="text-center">Quiz</h2>   
                             <h3 class="text-center">Bem vindo ao quiz. </h3>
                             <p class="text-center">Este é um site de quiz, focado em entretenimento e desconstração faça já seu login e divirtá-se!  </p>
+                            <h3><center><b>Integrantes da Equipe</b></center></h3>
+                            
                         </div>
                     </div>              
                     <hr>
