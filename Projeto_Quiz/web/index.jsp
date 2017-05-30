@@ -7,12 +7,19 @@
         <%@include file="WEB-INF/jspfs/links.jspf" %>
     </head>
     <body>
+        <% HttpSession userSession = request.getSession();
+            String mensagem = "";
+            if((String)userSession.getAttribute("erro") != null){
+                mensagem = (String)userSession.getAttribute("erro");
+            }
+        %>
         <div id="wrapper">
             <%@include file="WEB-INF/jspfs/menu.jspf" %>
             <div id="page-wrapper" class="container" >
                 <div id="page-inner">
                     <div class="row">
                         <div class="col-md-12">
+                            <p style="color: #DB0630;"><%= mensagem %></p>
                             <h2 class="text-center">Quiz</h2>   
                             <h3 class="text-center">Bem vindo ao quiz. </h3>
                             <p class="text-center">
@@ -86,5 +93,6 @@
         </div>
         <%@include file="WEB-INF/jspfs/modals.jspf" %>
         <%@include file="WEB-INF/jspfs/scripts.jspf" %>
+        <% session.removeAttribute("erro");%>
     </body>
 </html>
