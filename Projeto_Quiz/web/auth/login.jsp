@@ -26,21 +26,22 @@
                 if (Usuario.jaCadastrado(nomeUsuario, senha)) {
                     usuario = Usuario.findByUsername(nomeUsuario);
                     userSession.setAttribute("usuarioLogado", usuario);
-                if(nomeUsuario.equalsIgnoreCase("admin") && senha.equals("1234") ){
-                    usuario = Usuario.findByUsername(nomeUsuario);
-                    userSession.setAttribute("usuarioLogado", usuario);
-                    response.sendRedirect("../admin/questoes/index.jsp");
-                    break;
-                }else{
+                    if (nomeUsuario.equalsIgnoreCase("admin") && senha.equals("1234")) {
+                        usuario = Usuario.findByUsername(nomeUsuario);
+                        userSession.setAttribute("usuarioLogado", usuario);
+                        response.sendRedirect("../admin/index.jsp");
+                        break;
+                    } else {
+                        response.sendRedirect("../index.jsp");
+                        break;
+                    }
+                } else {
+                    userSession.setAttribute("erro", "Usuário não cadastrado.");
                     response.sendRedirect("../index.jsp");
                     break;
                 }
-            }else{
-                    response.sendRedirect("../index.jsp");
-                    break;
-                } 
-        }
-    } catch (Exception ex) {%>
+            }
+        } catch (Exception ex) {%>
     <h3>ERRO:<%=ex.getMessage()%></h3>
     <%throw ex;
         }
