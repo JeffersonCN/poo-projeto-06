@@ -20,6 +20,6 @@
                 response.sendRedirect("index.jsp");
             }
         %>
-        <h1>Página do quiz</h1>
+        <h1>Página do</h1>
     </body>
 </html>
