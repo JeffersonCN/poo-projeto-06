@@ -51,4 +51,5 @@
 
     userSession.setAttribute("mensagem", mensagem != null ? mensagem : "Usuário cadastrado com sucesso.");
     response.sendRedirect("index.jsp");
-%>  
+%>
+<%--Identado--%>
