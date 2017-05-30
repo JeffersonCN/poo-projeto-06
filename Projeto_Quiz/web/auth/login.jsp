@@ -24,18 +24,21 @@
         try {
             for (Usuario u : usuarios) {
                 if (Usuario.jaCadastrado(nomeUsuario, senha)) {
-                userSession.setAttribute("nomeUsuario", usuario.getUsername());
-                userSession.setAttribute("senhaUsuario", senha);
+                    usuario = Usuario.findByUsername(nomeUsuario);
+                    userSession.setAttribute("usuarioLogado", usuario);
                 if(nomeUsuario.equalsIgnoreCase("admin") && senha.equals("1234") ){
-                    userSession.setAttribute("nomeUsuario", usuario.getUsername());
-                    userSession.setAttribute("senhaUsuario", senha);
+                    usuario = Usuario.findByUsername(nomeUsuario);
+                    userSession.setAttribute("usuarioLogado", usuario);
                     response.sendRedirect("../admin/questoes/index.jsp");
                     break;
                 }else{
                     response.sendRedirect("../index.jsp");
                     break;
                 }
-            } 
+            }else{
+                    response.sendRedirect("../index.jsp");
+                    break;
+                } 
         }
     } catch (Exception ex) {%>
     <h3>ERRO:<%=ex.getMessage()%></h3>
