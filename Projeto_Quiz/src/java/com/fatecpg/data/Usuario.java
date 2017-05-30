@@ -234,6 +234,31 @@ public class Usuario {
 
         return false;
     }
+    
+    //VERIFICA USUÁRIO CADASTRADO
+    public static boolean jaCadastrado(String username, String senha){
+        try (Connection connection = ConnectionFactory.getConnection()) {
+            try (PreparedStatement pstatement = connection.prepareStatement("SELECT * FROM USUARIO WHERE USERNAME = ? AND SENHA = ?")) {
+                pstatement.setString(1, username);
+                pstatement.setString(2, senha);
+                pstatement.execute();
+                
+                ResultSet rs = pstatement.getResultSet();
+                
+                if (rs.next()) {
+                    return true;
+                } 
+            } catch (Exception ex) {
+                System.out.println("Erro ao buscar usuário: " + ex.getMessage());
+            }
+            
+            connection.close();
+        } catch (Exception ex) {
+            System.out.println("Erro ao obter conexão com o banco de dados: " + ex.getMessage());
+        }
+
+        return false;
+    }
 
     // ### RELACIONAMENTOS ###
     public Perfil getPerfil() {
