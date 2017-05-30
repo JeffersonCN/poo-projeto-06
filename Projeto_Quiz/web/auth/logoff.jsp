@@ -14,6 +14,7 @@
             HttpSession userSession = request.getSession();
             userSession.invalidate();
             response.sendRedirect("../index.jsp");
-            %>
+        %>
     </body>
 </html>
+<%--Identado--%>
