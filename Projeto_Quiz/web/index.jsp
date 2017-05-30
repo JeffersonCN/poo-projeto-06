@@ -20,34 +20,52 @@
                                 Crie sua conta agora e participe, e tente ficar em primeiro no </br>
                                 <span style="font-size: 35px; color:red;"><b>Ranking</b>!</span>
                             </p>
-                            
-                            <h3 class="text-center"><b>Integrantes da Equipe</b></h3>
-                            <p class="text-center">Jefferson Nascimento</p>
-                            <p class="text-center">Responsável por:</br>
-                                Criação do banco de dados;</br>
-                                Implementação do CRUD;</br>
-                                Implementação de gerenciamento de questões e usuários.</br>
-                            </p>
-                            <p class="text-center">Leonardo Santos</p>
-                            <p class="text-center">Responsável por:</br>
-                                Suporte na criação do banco de dados;</br>
-                                Implementação do logoff por parte do administrador;<br>
-                                Implementação de autenticação de usuário.<br>
-                            </p>
-                            <p class="text-center">Helaman Spadari</p>
-                            <p class="text-center">Responsável por:</br>
-                                Implemtação do link da index ao css;</br>
-                                Criação da pasta includes;</br>
-                                Adição dos includes nas páginas.</br>
-                            </p>
-
-                            <p class="text-center">Cesar Cesario<p>
-                            <p class="text-center">Responsável por:</br>
-                                Conteúdo sobre a equipe na index principal;</br>
-                                Pesquisa de campo sobre perguntas do questionário;</br>
-                                Identação e verificação de erros no codigo;</br>
-                                Feedback de teste do projeto.</br>
-                            </p>
+                            <table border='1' style='text-align:center; margin-left: 10%;'>
+                                <thead>
+                                <th colspan="2"><h3 class="text-center"><b>Integrantes da Equipe</b></h3></th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <p class="text-center">Jefferson Nascimento</p>
+                                            <p class="text-center">Responsável por:</br>
+                                                Criação do banco de dados;</br>
+                                                Implementação do CRUD;</br>
+                                                Implementação de gerenciamento de questões e usuários.</br>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p class="text-center">Leonardo Santos</p>
+                                            <p class="text-center">Responsável por:</br>
+                                                Suporte na criação do banco de dados;</br>
+                                                Implementação do logoff por parte do administrador;<br>
+                                                Implementação de autenticação de usuário.<br>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                <tr>
+                                <td>
+                                    <p class="text-center">Helaman Spadari</p>
+                                    <p class="text-center">Responsável por:</br>
+                                        Implemtação do link da index ao css;</br>
+                                        Criação da pasta includes;</br>
+                                        Adição dos includes nas páginas;</br>
+                                        Ajuste nas telas;</br>
+                                        Testes.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p class="text-center">Cesar Cesario<p>
+                                    <p class="text-center">Responsável por:</br>
+                                        Conteúdo sobre a equipe na index principal;</br>
+                                        Pesquisa de campo sobre perguntas do questionário;</br>
+                                        Identação e verificação de erros no codigo;</br>
+                                        Feedback de teste do projeto.</br>
+                                    </p>
+                                </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>              
                     <hr>
