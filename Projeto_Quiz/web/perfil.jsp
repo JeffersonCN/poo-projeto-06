@@ -1,7 +1,7 @@
 <%-- 
-    Document   : newjsp
-    Created on : 29/05/2017, 21:46:32
-    Author     : Cesar
+    Document   : perfil
+    Created on : 30/05/2017, 18:06:14
+    Author     : Leonardo
 --%>
 
 <%@page import="br.com.fatecpg.helpers.ServerHelpers"%>
@@ -17,10 +17,10 @@
         <%
             HttpSession userSession = request.getSession();
             Usuario usuarioLogado = (Usuario)userSession.getValue("usuarioLogado");
-            if(ServerHelpers.isAdminLogged(usuarioLogado) == false){
-                response.sendRedirect(ServerHelpers.getRootPath(request)+"/index.jsp");
+            if(!ServerHelpers.isLogged(usuarioLogado)){
+                response.sendRedirect("index.jsp");
             }
         %>
-        <h1>Hello World!</h1>
+        <h1>Perfil do Usuário</h1>
     </body>
 </html>
