@@ -20,7 +20,7 @@
                                 Crie sua conta agora e participe, e tente ficar em primeiro no </br>
                                 <span style="font-size: 35px; color:red;"><b>Ranking</b>!</span>
                             </p>
-                            <table border='1' style='text-align:center; margin-left: 10%;'>
+                            <table border='0' style='text-align:center; margin-left: 10%;'>
                                 <thead>
                                 <th colspan="2"><h3 class="text-center"><b>Integrantes da Equipe</b></h3></th>
                                 </thead>
