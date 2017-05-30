@@ -21,19 +21,18 @@
             String nome = request.getParameter("nomeCadastro");
             String senha = request.getParameter("senhaCadastro");
             String nomeUsuario = request.getParameter("nomeUsuarioCadastro");
-            userSession.setAttribute("jaCadastrado", false);
             Usuario usuario = new Usuario(nomeUsuario, nome, senha, 2);
 
             ArrayList<Usuario> usuarios = usuario.all();
 
             try {
                     if(Usuario.hasUsername(nomeUsuario)){
-                        userSession.setAttribute("jaCadastrado", true);
+                        userSession.setAttribute("erro", "Usuário já cadastrado com esse nome.");
                     } else {
                         usuario.store();
                         userSession.setAttribute("usuarioLogado", usuario);
                     }
-                    response.sendRedirect("../index.jsp");
+                        response.sendRedirect("../index.jsp");
         } catch (Exception ex) {%>
         <h3><%=ex.getMessage()%></h3>
         <%throw ex;
