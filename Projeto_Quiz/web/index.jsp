@@ -15,9 +15,41 @@
                         <div class="col-md-12">
                             <h2 class="text-center">Quiz</h2>   
                             <h3 class="text-center">Bem vindo ao quiz. </h3>
-                            <p class="text-center">Este é um site de quiz, focado em entretenimento e desconstração faça já seu login e divirtá-se!  </p>
-                            <h3><center><b>Integrantes da Equipe</b></center></h3>
-                            
+                            <p class="text-center">
+                                Este é um site de quiz,
+                                focado em entretenimento e desconstração faça já seu login e divirtá-se!
+                            </p>
+                            <center>
+                                <div class="container text-center">
+                                    <h3><b>Integrantes da Equipe</b></h3>
+                                    <p>Jefferson Nascimento</p>
+                                        <p>Responsável por:</br>
+                                            Criação do banco de dados;</br>
+                                            Implementação do CRUD;</br>
+                                            Implementação de gerenciamento de questões e usuários.</br>
+                                        </p>
+                                    <p>Leonardo Santos</p>
+                                        <p>Responsável por:</br>
+                                            Suporte na criação do banco de dados;</br>
+                                            Implementação do logoff por parte do administrador;<br>
+                                            Implementação de autenticação de usuário.<br>
+                                        </p>
+                                    <p>Helaman Spadari</p>
+                                        <p>Responsável por:</br>
+                                            Implemtação do link da index ao css;</br>
+                                            Criação da pasta includes;</br>
+                                            Adição dos includes nas páginas.</br>
+                                        </p>
+                                     
+                                        <p>Cesar Cesario<p>
+                                        <p>Responsável por:</br>
+                                            Conteúdo sobre a equipe na index principal;</br>
+                                            Pesquisa de campo sobre perguntas do questionário;</br>
+                                            Identação e verificação de erros no codigo;</br>
+                                            Feedback de teste do projeto.</br>
+                                        </p>
+                                </div>
+                            </center>
                         </div>
                     </div>              
                     <hr>
