@@ -3,7 +3,6 @@
     Created on : 30/05/2017, 18:06:14
     Author     : Leonardo
 --%>
-
 <%@page import="br.com.fatecpg.helpers.ServerHelpers"%>
 <%@page import="com.fatecpg.data.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
