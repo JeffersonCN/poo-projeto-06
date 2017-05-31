@@ -67,8 +67,8 @@ public class Partida {
             try {
                 Statement statement = connection.createStatement();
                 String SQL = String.format(
-                        "INSERT INTO PARTIDA(PONTUACAO, DT_PARTIDA, USUARIO_ID) VALUES('%d', %t, %d)",
-                        this._pontuacao, this._data, this._usuarioId);
+                        "INSERT INTO PARTIDA(PONTUACAO, DT_PARTIDA, USUARIO_ID) VALUES(%d, DATE('%tY-%tm-%td'), %d)",
+                        this._pontuacao, this._data, this._data, this._data, this._usuarioId);
 
                 statement.execute(SQL, Statement.RETURN_GENERATED_KEYS);
 
@@ -172,8 +172,10 @@ public class Partida {
             int linhasAlteradas = 0;
             try (Connection connection = ConnectionFactory.getConnection()) {
                 String SQL = String.format(
-                        "UPDATE PARTIDA SET PONTUACAO = '%d', DT_PARTIDA = %t, USUARIO_ID = %d WHERE ID = %d",
+                        "UPDATE PARTIDA SET PONTUACAO = %d, DT_PARTIDA = DATE('%tY-%tm-%td'), USUARIO_ID = %d WHERE ID = %d",
                         this._pontuacao,
+                        this._data,
+                        this._data,
                         this._data,
                         this._usuarioId,
                         this._id
@@ -215,7 +217,7 @@ public class Partida {
 
         return false;
     }
-    
+
     // ### RELACIONAMENTOS ###
     public boolean registrarAlternativaEscolhida(int alternativaId) {
         try (Connection connection = ConnectionFactory.getConnection()) {
@@ -223,15 +225,15 @@ public class Partida {
                 pstatement.setInt(1, alternativaId);
                 pstatement.setInt(2, this._id);
                 pstatement.execute();
-                
+
                 pstatement.close();
                 connection.close();
-                
+
                 return true;
             } catch (Exception ex) {
                 System.out.println("Erro ao registrar a resposta: " + ex.getMessage());
             }
-            
+
             connection.close();
         } catch (Exception ex) {
             System.out.println("Erro ao obter conexão com o banco de dados: " + ex.getMessage());
@@ -239,27 +241,64 @@ public class Partida {
 
         return false;
     }
-    
+
+    public Integer getNumeroRespondidas() {
+        Connection connection = null;
+
+        try {
+            connection = ConnectionFactory.getConnection();
+            PreparedStatement pstatement = connection.prepareStatement("SELECT COUNT(ALTERNATIVA_ID) AS respondidas FROM ALTERNATIVA_PARTIDA WHERE PARTIDA_ID = ?");
+            pstatement.setInt(1, this._id);
+            pstatement.execute();
+
+            ResultSet result = pstatement.getResultSet();
+
+            if (result.next()) {
+                return result.getInt("respondidas");
+            }
+        } catch (SQLException e) {
+            System.out.println("Não foi possível contar as questões respondidas.");
+        }
+
+        return null;
+    }
+
+    public void calculaPontuacao() {
+        Connection connection = null;
+
+        try {
+            connection = ConnectionFactory.getConnection();
+            PreparedStatement pstatement = connection.prepareStatement("SELECT COUNT(CORRETA) AS corretas FROM ALTERNATIVA\n"
+                    + "WHERE CORRETA = TRUE\n"
+                    + "AND ID IN (SELECT ALTERNATIVA_ID FROM ALTERNATIVA_PARTIDA WHERE PARTIDA_ID = ?)");
+            pstatement.setInt(1, this._id);
+            pstatement.execute();
+
+            ResultSet result = pstatement.getResultSet();
+
+            if (result.next()) {
+                this._pontuacao = result.getInt("corretas");
+            }
+        } catch (SQLException e) {
+            System.out.println("Não foi possível calcular a pontuação.");
+        }
+    }
+
     public ArrayList<Alternativa> getAlternativasEscolhidas() {
         ArrayList<Alternativa> alternativas = null;
-        
+
         try (Connection connection = ConnectionFactory.getConnection()) {
-            try (PreparedStatement pstatement = connection.prepareStatement("SELECT ALTERNATIVA_ID FROM ALTERNATIVA_PARTIDA WHERE PARTIDA_ID = ?")) {
-                pstatement.setInt(1, this._id);
-                pstatement.execute();
-                
+            try (Statement pstatement = connection.createStatement()) {
+                pstatement.executeQuery(String.format("SELECT ALTERNATIVA_ID FROM ALTERNATIVA_PARTIDA WHERE PARTIDA_ID = %d", this._id));
+
                 ResultSet result = pstatement.getResultSet();
-                
+
                 alternativas = new ArrayList<>();
-                
-                if(result.next()) {
-                    alternativas.add(new Alternativa(
-                            result.getString("TEXTO"), 
-                            result.getBoolean("CORRETA"),
-                            result.getInt("QUESTAO_ID")
-                    ));
+
+                while (result.next()) {
+                    alternativas.add(Alternativa.find(result.getInt("ALTERNATIVA_ID")));
                 }
-                
+
                 pstatement.close();
                 connection.close();
             } catch (Exception ex) {
@@ -270,14 +309,5 @@ public class Partida {
         }
 
         return alternativas;
-    }
-    
-    public void calculaPontuacao() {
-        ArrayList<Alternativa> alternativas = this.getAlternativasEscolhidas();
-        this._pontuacao = 0;
-        
-        for(Alternativa alternativa : alternativas) {
-            this._pontuacao += alternativa.isCorreta() ? 1 : 0;
-        }
     }
 }
