@@ -24,7 +24,7 @@
                             <h3 class="text-center">Bem vindo ao quiz. </h3>
                         </div>
                     </div>             
-                            <div class="divider"></div>
+                    <div class="divider"></div>
                     <div class="row"> 
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="panel panel-default">
@@ -82,7 +82,7 @@
                                     <div class="title">
                                         Helaman Spadari
                                     </div>
-                                        <p class="text-center">Responsável pela implementação dos links das páginas, da criação das pasta e dos arquivos de include e suporte na correção de erros.</p>
+                                    <p class="text-center">Responsável pela implementação dos links das páginas, da criação das pasta e dos arquivos de include e suporte na correção de erros.</p>
                                 </div>
                                 <div class="bottom">
                                     <p class="text-muted">Desenvolvedor</p>
@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="info">
                                     <div class="title">
-                                       Leonardo Santos
+                                        Leonardo Santos
                                     </div>
                                     <p class="text-center">Responsável por auxiliar na modelagem do banco, realizar a estilização do site, criar lógica de autenticação de usuário e de proteção de acesso às páginas internas.</p>
                                 </div>
