@@ -4,8 +4,8 @@
 <%@ page pageEncoding="UTF-8" %>
 <%
     HttpSession userSession = request.getSession();
-    Usuario usuarioLogado = (Usuario) userSession.getAttribute("usuarioLogado");
-    if (ServerHelpers.isAdminLogged(usuarioLogado) == false) {
+    Usuario adminLogado = (Usuario) userSession.getAttribute("usuarioLogado");
+    if (ServerHelpers.isAdminLogged(adminLogado) == false) {
         userSession.setAttribute("erro", "Tentativa acesso à página restrita.");
         response.sendRedirect(ServerHelpers.getRootPath(request) + "/index.jsp");
     }
