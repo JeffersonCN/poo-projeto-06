@@ -58,34 +58,24 @@
                 <a href="#"><i class="fa fa-users lg"></i> Usuários<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
+                        <a href="<%=ServerHelpers.getRootPath(request)%>/admin/usuarios/index.jsp">Listar</a>
+                    </li>
+                    <li>
                         <a href="<%=ServerHelpers.getRootPath(request)%>/admin/usuarios/create.jsp">Criar</a>
                     </li>
-                    <li>
-                        <a href="<%=ServerHelpers.getRootPath(request)%>/admin/usuarios/edit.jsp">Editar</a>
-                    </li>
-                    <li>
-                        <a href="<%=ServerHelpers.getRootPath(request)%>/admin/usuarios/show.jsp">Exibir</a>
-                    </li>
-                    <li>
-                        <a href="<%=ServerHelpers.getRootPath(request)%>/admin/usuarios/index.jsp">Informações</a>
-                    </li>
+                    
                 </ul>
             </li>
             <li>
                 <a href="#"><i class="fa fa-list lg" ></i> Questões<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
+                        <a href="<%=ServerHelpers.getRootPath(request)%>/admin/questoes/index.jsp">Listar</a>
+                    </li>
+                    <li>
                         <a href="<%=ServerHelpers.getRootPath(request)%>/admin/questoes/create.jsp">Criar</a>
                     </li>
-                    <li>
-                        <a href="<%=ServerHelpers.getRootPath(request)%>/admin/questoes/edit.jsp">Editar</a>
-                    </li>
-                    <li>
-                        <a href="<%=ServerHelpers.getRootPath(request)%>/admin/questoes/show.jsp">Exibir</a>
-                    </li>
-                    <li>
-                        <a href="<%=ServerHelpers.getRootPath(request)%>/admin/questoes/index.jsp">Informações</a>
-                    </li>
+
                 </ul>
             </li>
             <%} else {%>
@@ -98,7 +88,7 @@
                 <a href="<%=ServerHelpers.getRootPath(request)%>/perfil.jsp"><i class="fa fa-user lg"></i> Perfil</a>
             </li>
             <li>
-                <a href="<%=ServerHelpers.getRootPath(request)%>/quiz.jsp"><i class="fa fa-list lg"></i> Quiz</a>
+                <a href="<%=ServerHelpers.getRootPath(request)%>/quiz/start.jsp"><i class="fa fa-list lg"></i> Quiz</a>
             </li>
             <%}%>
         </ul>
