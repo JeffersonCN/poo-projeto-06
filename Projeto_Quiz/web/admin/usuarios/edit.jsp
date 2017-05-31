@@ -20,7 +20,7 @@
             if (!ServerHelpers.isAdminLogged(adminLogado)) {
                 userSession.setAttribute("erro", "Acesso negado.");
                 response.sendRedirect(ServerHelpers.getRootPath(request) + "/index.jsp");
-            }
+            } else{
             String mensagem = null;
 
             Integer id = null;
