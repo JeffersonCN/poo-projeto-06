@@ -14,13 +14,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-            HttpSession userSession = request.getSession();
-            Usuario usuarioLogado = (Usuario)userSession.getValue("usuarioLogado");
-            if(ServerHelpers.isAdminLogged(usuarioLogado) == false){
-                response.sendRedirect(ServerHelpers.getRootPath(request)+"/index.jsp");
-            }
-        %>
+        <%@include file="../../WEB-INF/jspfs/protecaoAdmin.jspf" %>
+        <%@include file="../WEB-INF/jspfs/menuLateral.jspf" %>
+        
+        <%@include file="../WEB-INF/jspfs/footer.jspf" %>
+        <%@include file="../WEB-INF/jspfs/scripts.jspf" %>
         <h1>Hello World!</h1>
     </body>
 </html>
