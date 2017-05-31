@@ -35,7 +35,7 @@
 
                                 if (usuarios != null) {
                             %>
-                            <h1>Usuários</h1>
+                            <h1 class="text-center">Usuários Cadastrados</h1>
                             <%
                                 mensagem = (String) userSession.getAttribute("mensagem");
 
@@ -46,12 +46,12 @@
                                 }
                             %>
 
-                            <table border="1">
+                            <table class="table table-bordered table-responsive table-striped">
                                 <tr>
-                                    <td>ID</td>
-                                    <td>Nome</td>
-                                    <td>Username</td>
-                                    <td>Perfil</td>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Username</th>
+                                    <th>Perfil</th>
                                 </tr>
                                 <%
                                     for (Usuario usuario : usuarios) {
