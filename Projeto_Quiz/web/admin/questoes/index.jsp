@@ -23,8 +23,6 @@
                 <div id="page-inner">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2 class="text-center">Painel do Administrador</h2>   
-                            <h5 class="text-center">Bem vindo, Admnistrador. </h5>
                             <%
                                 String mensagem = (String) userSession.getAttribute("mensagem");
 
