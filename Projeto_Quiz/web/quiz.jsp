@@ -13,13 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-            HttpSession userSession = request.getSession();
-            Usuario usuarioLogado = (Usuario)userSession.getValue("usuarioLogado");
-            if(!ServerHelpers.isLogged(usuarioLogado)){
-                response.sendRedirect("index.jsp");
-            }
-        %>
+        <%@include file="WEB-INF/jspfs/protecaoUsuario.jspf" %>
         <h1>Página do</h1>
     </body>
 </html>
