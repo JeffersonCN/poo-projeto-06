@@ -3,7 +3,6 @@
     Created on : 31/05/2017, 02:19:10
     Author     : jeffersoncn
 --%>
-
 <%@page import="com.fatecpg.data.Partida"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
