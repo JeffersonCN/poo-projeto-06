@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -44,7 +45,7 @@ public class Partida {
     }
 
     public Date getData() {
-        return _data;
+        return this._data;
     }
 
     public void setData(Date _data) {
@@ -63,12 +64,14 @@ public class Partida {
     // ------- CREATE ---------------------
     // Insere o registro no banco de dados de acordo com os atributos do objeto
     public boolean store() throws SQLException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try (Connection connection = ConnectionFactory.getConnection()) {
             try {
                 Statement statement = connection.createStatement();
+                
                 String SQL = String.format(
-                        "INSERT INTO PARTIDA(PONTUACAO, DT_PARTIDA, USUARIO_ID) VALUES(%d, DATE('%tY-%tm-%td'), %d)",
-                        this._pontuacao, this._data, this._data, this._data, this._usuarioId);
+                        "INSERT INTO PARTIDA(PONTUACAO, DT_PARTIDA, USUARIO_ID) VALUES(%d, TIMESTAMP('%s'), %d)",
+                        this._pontuacao, dateFormat.format(this._data), this._usuarioId);
 
                 statement.execute(SQL, Statement.RETURN_GENERATED_KEYS);
 
@@ -168,15 +171,14 @@ public class Partida {
     // ------- UPDATE ---------------------
     // Atualiza o registro no banco de acordo com as modificações feitas no objeto
     public boolean update() throws SQLException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         try {
             int linhasAlteradas = 0;
             try (Connection connection = ConnectionFactory.getConnection()) {
                 String SQL = String.format(
-                        "UPDATE PARTIDA SET PONTUACAO = %d, DT_PARTIDA = DATE('%tY-%tm-%td'), USUARIO_ID = %d WHERE ID = %d",
+                        "UPDATE PARTIDA SET PONTUACAO = %d, DT_PARTIDA = TIMESTAMP('%s'), USUARIO_ID = %d WHERE ID = %d",
                         this._pontuacao,
-                        this._data,
-                        this._data,
-                        this._data,
+                        dateFormat.format(this._data),
                         this._usuarioId,
                         this._id
                 );
@@ -309,5 +311,26 @@ public class Partida {
         }
 
         return alternativas;
+    }
+    
+    public String getDataFormatada() {
+        Connection connection = null;
+
+        try {
+            connection = ConnectionFactory.getConnection();
+            PreparedStatement pstatement = connection.prepareStatement("SELECT DT_PARTIDA FROM PARTIDA WHERE ID = ?");
+            pstatement.setInt(1, this._id);
+            pstatement.execute();
+
+            ResultSet result = pstatement.getResultSet();
+
+            if (result.next()) {
+                return result.getString("DT_PARTIDA");
+            }
+        } catch (SQLException e) {
+            System.out.println("Não foi possível buscar a data.");
+        }
+        
+        return null;
     }
 }
