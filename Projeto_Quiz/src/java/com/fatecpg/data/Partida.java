@@ -68,7 +68,7 @@ public class Partida {
         try (Connection connection = ConnectionFactory.getConnection()) {
             try {
                 Statement statement = connection.createStatement();
-                
+
                 String SQL = String.format(
                         "INSERT INTO PARTIDA(PONTUACAO, DT_PARTIDA, USUARIO_ID) VALUES(%d, TIMESTAMP('%s'), %d)",
                         this._pontuacao, dateFormat.format(this._data), this._usuarioId);
@@ -312,7 +312,7 @@ public class Partida {
 
         return alternativas;
     }
-    
+
     public String getDataFormatada() {
         Connection connection = null;
 
@@ -330,7 +330,38 @@ public class Partida {
         } catch (SQLException e) {
             System.out.println("Não foi possível buscar a data.");
         }
-        
+
         return null;
+    }
+
+    public static ArrayList<Partida> getRanking() {
+        ArrayList<Partida> partidas = new ArrayList<>();
+        Connection connection = null;
+
+        try {
+            connection = ConnectionFactory.getConnection();
+            Statement statement = connection.createStatement();
+            statement.executeQuery("SELECT * FROM PARTIDA\n"
+                    + "ORDER BY PONTUACAO DESC\n"
+                    + "FETCH FIRST 10 ROWS ONLY");
+
+            ResultSet result = statement.getResultSet();
+
+            while (result.next()) {
+                partidas.add(
+                        new Partida(result.getInt("ID"), result.getInt("PONTUACAO"), result.getDate("DT_PARTIDA"), result.getInt("USUARIO_ID"))
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println("Não foi possível carregar o ranking.");
+        }
+
+        return partidas;
+    }
+    
+    public String getPlayerName() throws SQLException {
+        Usuario player = Usuario.find(this._usuarioId);
+        
+        return player.getNome();
     }
 }
