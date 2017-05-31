@@ -17,10 +17,9 @@
     </head>
     <body>
         <%@include file="../../WEB-INF/jspfs/protecaoAdmin.jspf" %>
-        <%@include file="../../WEB-INF/jspfs/menu.jspf" %>
         <div id="wrapper">
-            <%@include file="../../WEB-INF/jspfs/menuLateral.jspf"%>
-            <div id="page-wrapper" class="container">
+            <%@include file="../../WEB-INF/jspfs/menuConjunto.jspf" %>
+            <div id="page-wrapper">
                 <div id="page-inner">
                     <div class="row">
                         <div class="col-md-12">

@@ -12,18 +12,11 @@
         <title>Quiz - Inserir Questão</title>
     </head>
     <body>
-        <%@include file="../../WEB-INF/jspfs/menu.jspf" %>
         <%@include file="../../WEB-INF/jspfs/protecaoAdmin.jspf" %>
         <div id="wrapper">
-            <%@include file="../../WEB-INF/jspfs/menuLateral.jspf"%>
-            <div id="page-wrapper" class="container text-center">
+            <%@include file="../../WEB-INF/jspfs/menuConjunto.jspf" %>
+            <div id="page-wrapper" class="text-center">
                 <div id="page-inner">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>Painel do Administrador</h2>   
-                            <h4>Criação de questões. </h4>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
                             <form action="store.jsp" method="post">

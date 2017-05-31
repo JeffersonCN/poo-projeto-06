@@ -9,35 +9,50 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file="../../WEB-INF/jspfs/links.jspf" %>
         <title>Quiz - Inserir Usuário</title>
     </head>
     <body>
         <%@include file="../../WEB-INF/jspfs/protecaoAdmin.jspf" %>
-        <form action="store.jsp" method="post">
-            <h2>Inserir novo usuário</h2>
-            <input type="radio" name="perfil" value="1"> Admin
-            <input type="radio" name="perfil" value="2"> Jogador
-            <br>
-            <br>
-            <label for="txtNome">Nome Completo:</label>
-            <br>
-            <input type="text" name="txtNome" id="txtNome"/>
-            <br>
-            <label for="txtUsername">Username:</label>
-            <br>
-            <input type="text" name="txtUsername" id="txtUsername"/>
-            <br>
-            <label for="txtSenha">Senha:</label>
-            <br>
-            <input type="password" name="txtSenha" id="txtSenha"/>
-            <br>
-            <label for="txtConfirmaSenha">Confirmação de Senha:</label>
-            <br>
-            <input type="password" name="txtConfirmaSenha" id="txtConfirmaSenha"/>
-            <br>
-            <br>
-            <input type="submit" value="Cadastrar" />
-        </form>
+        <div id="wrapper">
+            <%@include file="../../WEB-INF/jspfs/menuConjunto.jspf" %>
+            <div id="page-wrapper" >
+                <div id="page-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="store.jsp" method="post">
+                                <h2>Inserir novo usuário</h2>
+                                <input type="radio" name="perfil" value="1"> Admin
+                                <input type="radio" name="perfil" value="2"> Jogador
+                                <br>
+                                <br>
+                                <label for="txtNome">Nome Completo:</label>
+                                <br>
+                                <input type="text" name="txtNome" id="txtNome"/>
+                                <br>
+                                <label for="txtUsername">Username:</label>
+                                <br>
+                                <input type="text" name="txtUsername" id="txtUsername"/>
+                                <br>
+                                <label for="txtSenha">Senha:</label>
+                                <br>
+                                <input type="password" name="txtSenha" id="txtSenha"/>
+                                <br>
+                                <label for="txtConfirmaSenha">Confirmação de Senha:</label>
+                                <br>
+                                <input type="password" name="txtConfirmaSenha" id="txtConfirmaSenha"/>
+                                <br>
+                                <br>
+                                <input type="submit" value="Cadastrar" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%@include file="../../WEB-INF/jspfs/footer.jspf" %>
+        <%@include file="../../WEB-INF/jspfs/modals.jspf" %>
+        <%@include file="../../WEB-INF/jspfs/scripts.jspf" %>
     </body>
 </html>
 <%--Identado--%>
