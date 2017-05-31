@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Questao {
     private Integer _id;
@@ -113,6 +114,14 @@ public class Questao {
         }
 
         return questoes;
+    }
+    
+    public static ArrayList<Questao> getRandom() throws SQLException {
+        ArrayList<Questao> questoes = Questao.all();
+        
+        Collections.shuffle(questoes);
+        
+        return questoes; 
     }
     
     // ------- UPDATE ---------------------
