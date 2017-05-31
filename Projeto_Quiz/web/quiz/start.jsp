@@ -3,7 +3,6 @@
     Created on : 30/05/2017, 00:48:59
     Author     : jeffersoncn
 --%>
-
 <%@page import="com.fatecpg.data.Alternativa"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.fatecpg.data.Questao"%>
