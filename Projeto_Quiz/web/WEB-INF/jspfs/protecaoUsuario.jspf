@@ -3,8 +3,8 @@
 <%@page import="com.fatecpg.data.Usuario"%>
 <%
     HttpSession userSession = request.getSession();
-    Usuario usuarioLogado = (Usuario) userSession.getAttribute("usuarioLogado");
-    if (!ServerHelpers.isLogged(usuarioLogado)) {
+    Usuario usuarioLogged = (Usuario) userSession.getAttribute("usuarioLogado");
+    if (!ServerHelpers.isLogged(usuarioLogged)) {
         userSession.setAttribute("erro", "Acesso negado.");
         response.sendRedirect("index.jsp");
     }

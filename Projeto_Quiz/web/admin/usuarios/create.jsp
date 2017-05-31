@@ -26,9 +26,9 @@
                                     <form action="store.jsp" method="post">
                                         <div class="form-group text-center">
                                             <label for="radio1" class="radio-inline">Admin</label>
-                                            <input type="radio" name="perfil" id="radio1" value="1">
+                                            <input type="radio" name="perfil" id="radio1" value="1" required="">
                                             <label for="radio2" class="radio-inline">Jogador</label>
-                                            <input type="radio" name="perfil" id="radio2" value="2">
+                                            <input type="radio" name="perfil" id="radio2" value="2" required="">
                                         </div>
                                         <div class="form-group">
                                             <label for="txtNome">Nome Completo:</label>
@@ -44,7 +44,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="txtConfirmaSenha">Confirmação de Senha:</label>
-                                            <input type="password" name="txtConfirmaSenha" id="txtConfirmaSenha" class="form-control" oninput="validaSenha(this)" required/>
+                                            <input type="password" name="txtConfirmaSenha" id="txtConfirmaSenha" class="form-control" required/>
                                         </div>
                                         <input class="btn btn-primary" type="submit" value="Cadastrar" />
                                     </form>

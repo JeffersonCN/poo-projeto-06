@@ -14,6 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file="../../WEB-INF/jspfs/links.jspf" %>
         <title>JSP Page</title>
     </head>
     <body>
@@ -39,10 +40,10 @@
                     <form action="update.jsp" method="post">
                         <h2>Editar questão</h2>
                         <label for="txtQuestao">Questão:</label>
-                        <input type="text" name="txtQuestao" id="txtQuestao" value="<%=questao.getTexto()%>" />
+                        <input type="text" name="txtQuestao" id="txtQuestao" value="<%=questao.getTexto()%>" class="form-control" />
                         <input type="hidden" name="id" value="<%= questao.getId()%>" />
                         <h3>Alternativas</h3>
-                        <table border="1" style="border-collapse: collapse;">
+                        <table class="table">
                             <tr>
                                 <th>#</th>
                                 <th>Texto</th>
@@ -56,8 +57,8 @@
                             %>
                             <tr>
                                 <td><%= i + 1%>.</td>
-                                <td><input type="text" name="alternativa[<%=i%>]" id="alternativa[<%=i%>]" value="<%=alternativa.getTexto()%>"/></td>
-                                <td><input type="radio" name="correta" value="<%=i%>" <%= alternativa.isCorreta() ? "checked" : ""%>></td>
+                                <td><input type="text" name="alternativa[<%=i%>]" id="alternativa[<%=i%>]" value="<%=alternativa.getTexto()%>"  class="form-control"/></td>
+                                <td><input type="radio" name="correta" value="<%=i%>" <%= alternativa.isCorreta() ? "checked" : ""%> ></td>
                             </tr>
                             <%
                                             }
@@ -74,7 +75,7 @@
                             %>
                         </table>
                         <br>
-                        <input type="submit" value="Editar" />
+                        <input class="btn btn-primary" type="submit" value="Editar" />
                     </form>
                 </div>
             </div>

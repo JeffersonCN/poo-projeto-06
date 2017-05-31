@@ -52,6 +52,7 @@
                                     <th>Nome</th>
                                     <th>Username</th>
                                     <th>Perfil</th>
+                                    <th>Ação</th>
                                 </tr>
                                 <%
                                     for (Usuario usuario : usuarios) {
@@ -61,6 +62,9 @@
                                     <td><%= usuario.getNome()%></td>
                                     <td><%= usuario.getUsername()%></td>
                                     <td><%= usuario.getPerfil().getDescricao()%></td>
+                                    <td>
+                                        <a href="<%=ServerHelpers.getRootPath(request)%>/admin/usuarios/edit.jsp?id=<%= usuario.getId() %>"><i class="fa fa-edit"></i></a> <a href="<%=ServerHelpers.getRootPath(request)%>/admin/usuarios/delete.jsp?id=<%= usuario.getId() %>"><i class="fa fa-trash"></i></a>
+                                    </td>
                                 </tr>
                                 <%
                                     }

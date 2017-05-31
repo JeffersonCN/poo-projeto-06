@@ -29,30 +29,39 @@
                                 if (mensagem != null) {
                             %>
                             <p><%=mensagem%></p>
+
                             <%
                                 }
 
                                 ArrayList<Questao> questoes = Questao.all();
 
-                                for (Questao questao : questoes) {
+                                if (questoes != null) {
                             %>
-                            <p>
-                                Questao: <%= questao.getTexto()%><br>
-                            <ol>
+                            <table class="table table-bordered table-responsive table-striped">
+                                <t>
+                                    <th>ID</th>
+                                    <th>Pergunta</th>
+                                    <th>Ação</th>
+                                </tr>
                                 <%
-                                    for (Alternativa alternativa : questao.getAlternativas()) {
+                                    for (Questao questao : questoes) {
                                 %>
-                                <li>
-                                    <%= alternativa.getTexto()%>
-                                </li>
+                                <tr>
+                                    <td><%= questao.getId()%></td>
+                                    <td><%= questao.getTexto() %></td>
+                                    <td>
+                                        <a href="<%=ServerHelpers.getRootPath(request)%>/admin/questoes/edit.jsp?id=<%= questao.getId() %>"><i class="fa fa-edit"></i></a> <a href="<%=ServerHelpers.getRootPath(request)%>/admin/questoes/delete.jsp?id=<%= questao.getId() %>"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
                                 <%
                                     }
+                                    userSession.removeAttribute("mensagem");
+
                                 %>
-                            </ol>
-                            </p>
-                            <%
-                                }
-                                userSession.removeAttribute("mensagem");
+                            </table>
+                            <%    }
+
+
                             %>
                         </div>
                     </div>              
