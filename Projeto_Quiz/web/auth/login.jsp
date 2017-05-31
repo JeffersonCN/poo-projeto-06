@@ -26,7 +26,7 @@
                 if (Usuario.jaCadastrado(nomeUsuario, senha)) {
                     usuario = Usuario.findByUsername(nomeUsuario);
                     userSession.setAttribute("usuarioLogado", usuario);
-                    if (nomeUsuario.equalsIgnoreCase("admin") && senha.equals("1234")) {
+                    if (usuario.isAdmin()) {
                         usuario = Usuario.findByUsername(nomeUsuario);
                         userSession.setAttribute("usuarioLogado", usuario);
                         response.sendRedirect("../admin/index.jsp");
@@ -36,7 +36,7 @@
                         break;
                     }
                 } else {
-                    userSession.setAttribute("erro", "Usuário não cadastrado.");
+                    userSession.setAttribute("erro", "Dados incorretos.");
                     response.sendRedirect("../index.jsp");
                     break;
                 }

@@ -11,57 +11,72 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file="../../WEB-INF/jspfs/links.jspf" %>
         <title>Gerenciar Usuários</title>
     </head>
     <body>
-        <%
-            request.setCharacterEncoding("utf-8");
-            HttpSession userSession = request.getSession();
+        <%@include file="../../WEB-INF/jspfs/protecaoAdmin.jspf" %>
+        <div id="wrapper">
+            <%@include file="../../WEB-INF/jspfs/menuConjunto.jspf" %>
+            <div id="page-wrapper" >
+                <div id="page-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <%request.setCharacterEncoding("utf-8");
 
-            String mensagem = null;
-            ArrayList<Usuario> usuarios = null;
+                                String mensagem = null;
+                                ArrayList<Usuario> usuarios = null;
 
-            try {
-                usuarios = Usuario.all();
-            } catch (Exception e) {
-                mensagem = "Erro ao carregar usuários";
-            }
+                                try {
+                                    usuarios = Usuario.all();
+                                } catch (Exception e) {
+                                    mensagem = "Erro ao carregar usuários";
+                                }
 
-            if (usuarios != null) {
-        %>
-        <h1>Usuários</h1>
-        <%
-            mensagem = (String) userSession.getAttribute("mensagem");
+                                if (usuarios != null) {
+                            %>
+                            <h1 class="text-center">Usuários Cadastrados</h1>
+                            <%
+                                mensagem = (String) userSession.getAttribute("mensagem");
 
-            if (mensagem != null) {
-        %>
-        <p><%= mensagem%></p>
-        <%
-            }
-        %>
-        <table border="1">
-            <tr>
-                <td>ID</td>
-                <td>Nome</td>
-                <td>Username</td>
-                <td>Perfil</td>
-            </tr>
-            <%
-                for (Usuario usuario : usuarios) {
-            %>
-            <tr>
-                <td><%= usuario.getId()%></td>
-                <td><%= usuario.getNome()%></td>
-                <td><%= usuario.getUsername()%></td>
-                <td><%= usuario.getPerfil().getDescricao()%></td>
-            </tr>
-            <%
-                }
-            %>
-        </table>
-        <%
-            }
-        %>
+                                if (mensagem != null) {
+                            %>
+                            <p><%= mensagem%></p>
+                            <%
+                                }
+                            %>
+
+                            <table class="table table-bordered table-responsive table-striped">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Username</th>
+                                    <th>Perfil</th>
+                                </tr>
+                                <%
+                                    for (Usuario usuario : usuarios) {
+                                %>
+                                <tr>
+                                    <td><%= usuario.getId()%></td>
+                                    <td><%= usuario.getNome()%></td>
+                                    <td><%= usuario.getUsername()%></td>
+                                    <td><%= usuario.getPerfil().getDescricao()%></td>
+                                </tr>
+                                <%
+                                    }
+                                %>
+                            </table>
+                            <%
+                                }
+                            %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%@include file="../../WEB-INF/jspfs/footer.jspf" %>
+        <%@include file="../../WEB-INF/jspfs/modals.jspf" %>
+        <%@include file="../../WEB-INF/jspfs/scripts.jspf" %>
     </body>
 </html>
 <%--Identado--%>

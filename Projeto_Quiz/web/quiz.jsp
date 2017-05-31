@@ -10,10 +10,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file="WEB-INF/jspfs/links.jspf" %>
         <title>JSP Page</title>
     </head>
     <body>
-        <%@include file="WEB-INF/jspfs/protecaoUsuario.jspf" %>
-        <h1>Página do</h1>
-    </body>
+        <div id="wrapper">
+            <%@include file="WEB-INF/jspfs/menuConjunto.jspf" %>
+            <div id="page-wrapper" >
+                <div id="page-inner">
+                    <!--TO DO-->
+                </div>
+            </div>
+        </div>
+       
+    </div>
+     <%@include file="WEB-INF/jspfs/footer.jspf" %>
+    <%@include file="WEB-INF/jspfs/modals.jspf" %>
+    <%@include file="WEB-INF/jspfs/scripts.jspf" %>
+</body>
 </html>

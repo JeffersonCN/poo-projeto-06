@@ -3,17 +3,67 @@
     Created on : 30/05/2017, 18:06:14
     Author     : Leonardo
 --%>
-<%@page import="br.com.fatecpg.helpers.ServerHelpers"%>
 <%@page import="com.fatecpg.data.Usuario"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Index Quiz</title>
+        <%@include file="WEB-INF/jspfs/links.jspf" %>
     </head>
     <body>
-        <%@include file="WEB-INF/jspfs/protecaoUsuario.jspf" %>
-        <h1>Perfil do UsuÃ¡rio</h1>
+        <%
+            HttpSession userSession = request.getSession();
+            Usuario usuario = (Usuario) userSession.getAttribute("usuarioLogado");
+            if (!ServerHelpers.isLogged(usuario)) {
+                response.sendRedirect("index.jsp");
+            } else{
+
+        %>
+        <div id="wrapper">
+            <%@include file="WEB-INF/jspfs/menuConjunto.jspf" %>
+            <div id="page-wrapper" >
+                <div id="page-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="text-center" style="color:red;"><b><%= usuario.getUsername()%></b></h1>   
+                            <h3 class="text-center">Este é o seu perfil. </h3>
+                        </div>
+                    </div>              
+                    <hr>
+                    <div class="row"> 
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading text-center">
+                                    <strong>Histórico</strong>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Pontuação</th>
+                                                    <th>Data/hora</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <!--CODIGO DE GERAR TABELA-->
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%@include file="WEB-INF/jspfs/footer.jspf" %>
+        </div>
+        <%@include file="WEB-INF/jspfs/modals.jspf" %>
+        <%@include file="WEB-INF/jspfs/scripts.jspf" %>
+        <%}%>
     </body>
 </html>
