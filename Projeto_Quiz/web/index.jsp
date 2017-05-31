@@ -9,75 +9,22 @@
     <body>
         <% HttpSession userSession = request.getSession();
             String mensagem = "";
-            if((String)userSession.getAttribute("erro") != null){
-                mensagem = (String)userSession.getAttribute("erro");
+            if ((String) userSession.getAttribute("erro") != null) {
+                mensagem = (String) userSession.getAttribute("erro");
             }
         %>
         <div id="wrapper">
-            <%@include file="WEB-INF/jspfs/menu.jspf" %>
-            <div id="page-wrapper" class="container" >
+            <%@include file="WEB-INF/jspfs/menuConjunto.jspf" %>
+            <div id="page-wrapper" >
                 <div id="page-inner">
                     <div class="row">
                         <div class="col-md-12">
-                            <p style="color: #DB0630;"><%= mensagem %></p>
-                            <h1 class="text-center" style="font-size: 60px; color:red;"><b>Quiz</b></h1>   
-                            </br><h3 class="text-center">Bem vindo ao quiz. </h3>
-                            <p class="text-center">
-                                Este é um Quiz, onde você pode se divertir e dar muita risada.
-                                Crie sua conta agora e participe, e tente ficar em primeiro no </br>
-                                <span style="font-size: 35px; color:red;"><b>Ranking</b>!</span>
-                            </p></br>
-                            <table border='0' style='text-align:center; margin-left: 10%;'>
-                                <thead>
-                                <th colspan="3"><h3 class="text-center"><b>Integrantes da Equipe</b></h3></th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <p class="text-center"><b>Jefferson Nascimento</b></p>
-                                            <p class="text-center">Responsável por:</br>
-                                                Criação do banco de dados;</br>
-                                                Implementação do CRUD;</br>
-                                                Implementação de gerenciamento de questões e usuários.</br>
-                                            </p>
-                                        </td>
-                                        <td style='height: 1px; width: 20px;'></td>
-                                        <td>
-                                            <p class="text-center"><b>Leonardo Santos</b></p>
-                                            <p class="text-center">Responsável por:</br>
-                                                Suporte na criação do banco de dados;</br>
-                                                Implementação do logoff por parte do administrador;<br>
-                                                Implementação de autenticação de usuário.<br>
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p class="text-center"><b>Helaman Spadari</b></p>
-                                            <p class="text-center">Responsável por:</br>
-                                                Implemtação do link da index ao css;</br>
-                                                Criação da pasta includes;</br>
-                                                Adição dos includes nas páginas;</br>
-                                                Ajuste nas telas;</br>
-                                                Testes.
-                                            </p>
-                                        </td>
-                                        <td></td>
-                                        <td>
-                                            <p class="text-center"><b>Cesar Cesario</b><p>
-                                            <p class="text-center">Responsável por:</br>
-                                                Conteúdo sobre a equipe na index principal;</br>
-                                                Pesquisa de campo sobre perguntas do questionário;</br>
-                                                Identação e verificação de erros no codigo;</br>
-                                                Feedback de teste do projeto.</br>
-                                            </p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <p style="color: #DB0630;"><%= mensagem%></p>
+                            <h1 class="text-center"><strong>Quiz</strong></h1>   
+                            <h3 class="text-center">Bem vindo ao quiz. </h3>
                         </div>
-                    </div>              
-                    <hr>
+                    </div>             
+                            <div class="divider"></div>
                     <div class="row"> 
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="panel panel-default">
@@ -96,7 +43,9 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <!--C?DIGO DE GERAR TABELA-->
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -105,12 +54,81 @@
                             </div>
                         </div>
                     </div>
+                    <div class="divider"></div>
+                    <h2 class="text-center">Equipe</h2>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="card hovercard col-md-2">
+                                <img src="assets/img/cover-cesar.jpg" alt="Cesar Cesario"/>
+                                <div class="avatar">
+                                    <img src="assets/img/cesar.jpg" alt="Cesar Cesario"  class="circle"/>
+                                </div>
+                                <div class="info">
+                                    <div class="title">
+                                        Cesar Cesario
+                                    </div>
+                                    <p class="text-center">Responsável pela elaboração dos textos da página principal, pesquisa de campo para o quiz, feedback de teste do projeto e suporte na correção de erros.</p>
+                                </div>
+                                <div class="bottom">
+                                    <p class="text-muted">Desenvolvedor</p>
+                                </div>
+                            </div>
+                            <div class="card hovercard col-md-2">
+                                <img src="assets/img/cover-helaman.jpg" alt="Helaman-fundo"/>
+                                <div class="avatar">
+                                    <img src="assets/img/helaman.jpg" alt="Helaman-foto"  class="circle"/>
+                                </div>
+                                <div class="info">
+                                    <div class="title">
+                                        Helaman Spadari
+                                    </div>
+                                        <p class="text-center">Responsável pela implementação dos links das páginas, da criação das pasta e dos arquivos de include e suporte na correção de erros.</p>
+                                </div>
+                                <div class="bottom">
+                                    <p class="text-muted">Desenvolvedor</p>
+                                </div>
+                            </div>
+                            <div class="card hovercard col-md-2">
+                                <img src="assets/img/cover-jefferson.jpg" alt="Jefferson-fundo"/>
+                                <div class="avatar">
+                                    <img src="assets/img/jefferson.jpg" alt="Jefferson-foto"  class="circle"/>
+                                </div>
+                                <div class="info">
+                                    <div class="title">
+                                        Jefferson Nascimento
+                                    </div>
+                                    <ul class="text-center lista-card">
+                                        <p class="text-center">Responsável por elaborar a modelagem do banco, implemenar as classes e os métodos, implementar o gerenciamento do administrador, auxiliar na correção de erros.</p>
+                                </div>
+                                <div class="bottom">
+                                    <p class="text-muted">Desenvolvedor</p>
+                                </div>
+                            </div>
+                            <div class="card hovercard col-md-2">
+                                <img src="assets/img/cover-leonardo.jpg" alt="Leonardo Santos"/>
+                                <div class="avatar">
+                                    <img src="assets/img/leonardo.jpg" alt="Leonardo Santos"  class="circle"/>
+                                </div>
+                                <div class="info">
+                                    <div class="title">
+                                       Leonardo Santos
+                                    </div>
+                                    <p class="text-center">Responsável por auxiliar na modelagem do banco, realizar a estilização do site, criar lógica de autenticação de usuário e de proteção de acesso às páginas internas.</p>
+                                </div>
+                                <div class="bottom">
+                                    <p class="text-muted">Desenvolvedor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <%@include file="WEB-INF/jspfs/footer.jspf" %>
         </div>
-        <%@include file="WEB-INF/jspfs/modals.jspf" %>
-        <%@include file="WEB-INF/jspfs/scripts.jspf" %>
-        <% session.removeAttribute("erro");%>
-    </body>
+    </div>
+</div>
+<%@include file="WEB-INF/jspfs/footer.jspf" %>
+<%@include file="WEB-INF/jspfs/modals.jspf" %>
+<%@include file="WEB-INF/jspfs/scripts.jspf" %>
+<% session.removeAttribute("erro");%>
+</body>
 </html>
