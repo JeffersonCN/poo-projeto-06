@@ -3,7 +3,6 @@
     Created on : 31/05/2017, 00:58:02
     Author     : jeffersoncn
 --%>
-
 <%@page import="java.sql.Date"%>
 <%@page import="com.fatecpg.data.Usuario"%>
 <%@page import="com.fatecpg.data.Partida"%>
@@ -40,8 +39,7 @@
                 }
             } catch (Exception e) {
                 mensagem = "Alternativa inválida.";
-            }
-            
+            }        
             partida.calculaPontuacao();
             partida.update();
             
@@ -50,10 +48,8 @@
     } else {
         mensagem = "Não há usuário para iniciar uma partida";
     }
-
     if (mensagem != null) {
         request.getSession().setAttribute("mensagem", mensagem);
     }
-    
     response.sendRedirect("result.jsp");
 %>
