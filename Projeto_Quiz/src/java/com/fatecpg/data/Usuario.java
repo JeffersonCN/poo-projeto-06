@@ -324,4 +324,13 @@ public class Usuario {
         }
         return null;
     }
+    
+    public ArrayList<Partida> getPartidas() {
+        try {
+            return Partida.all(this._id);
+        } catch (SQLException ex) {
+            System.out.println("Não foi possível carregar as partidas: " + ex.getMessage());
+        }
+        return null;
+    }
 }
