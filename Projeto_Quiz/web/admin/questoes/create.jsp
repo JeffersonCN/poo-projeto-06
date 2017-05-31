@@ -21,7 +21,7 @@
                         <div class="col-md-10 col-md-offset-1">
                             <form action="store.jsp" method="post">
                                 <h2>Inserir nova questão</h2>
-                                <div class="form-group">
+                                <div class="form-group col-md-6 col-md-offset-3">
                                     <label for="txtQuestao"><h3>Questão:</h3></label>
                                     <input type="text" name="txtQuestao" id="txtQuestao" class="form-control"/>
                                 </div>
@@ -87,7 +87,6 @@
                                 </td>
                             </tr>
                         </table>
-                        <br>
                         <input type="submit" value="Cadastrar" class="btn btn-primary"/>
                         </form>
                     </div>
