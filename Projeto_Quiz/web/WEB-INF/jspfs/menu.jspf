@@ -3,7 +3,8 @@
 <%@page import="com.fatecpg.data.Usuario"%>
 <%@ page pageEncoding="UTF-8" %>
 <%
-    Usuario usuarioLogado = (Usuario) userSession.getValue("usuarioLogado");%>
+    HttpSession userSession = request.getSession();
+    Usuario usuarioLogado = (Usuario) userSession.getAttribute("usuarioLogado");%>
 <nav class="navbar navbar-inverse navbar-cls-top " role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <a class="navbar-brand" href="<%=ServerHelpers.getRootPath(request)%>/index.jsp">Quiz</a> 
@@ -17,7 +18,7 @@
 
         <li><a href="#" data-toggle="modal" data-target="#cadastroModal"><i class="fa fa-user"></i> Cadastre-se</a></li>
         <li><a href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-sign-in"></i> Login</a></li>
-            <%} else if (usuarioLogado.getUsername().equals("admin") && usuarioLogado.getPassword().equals("1234")) {%>
+            <%} else if (usuarioLogado.isAdmin()) {%>
     </ul>
     <ul class="nav navbar-nav navbar-right" style="margin-right: 1%;">
         <li class="navbar-text">Bem vindo, <%=usuarioLogado.getUsername()%></li>
