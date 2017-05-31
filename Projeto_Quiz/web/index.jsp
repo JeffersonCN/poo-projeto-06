@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Index</title>
+        <title>Index Quiz</title>
         <%@include file="WEB-INF/jspfs/links.jspf" %>
     </head>
     <body>
@@ -82,7 +82,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading text-center">
-                                    Ranking
+                                    <b>Ranking</b>
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-responsive">
@@ -90,7 +90,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Pontua??o</th>
+                                                    <th>Pontuação</th>
                                                     <th>Nome</th>
                                                 </tr>
                                             </thead>
