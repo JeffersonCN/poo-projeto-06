@@ -49,7 +49,7 @@
             <img src="<%=ServerHelpers.getRootPath(request)%>/assets/img/user_admin.png" class="user-image img-responsive"/>
             </li>
             <li>
-                <a class="active-menu"  href="<%=ServerHelpers.getRootPath(request)%>/admin/index.jsp"><i class="fa fa-dashboard fa-3x"></i> Página Inicial</a>
+                <a class="active-menu"  href="<%=ServerHelpers.getRootPath(request)%>/index.jsp"><i class="fa fa-dashboard fa-3x"></i> Página Inicial</a>
             </li>
             <li>
                 <a href="<%=ServerHelpers.getRootPath(request)%>/admin/index.jsp"><i class="fa fa-cogs lg"></i> Gerenciamento</a>
