@@ -1,3 +1,5 @@
+<%@page import="com.fatecpg.data.Partida"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,17 +38,28 @@
                                         <table class="table table-striped table-bordered table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
+                                                    <th>Data/Hora</th>
                                                     <th>Pontuação</th>
                                                     <th>Nome</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <%
+                                                    ArrayList<Partida> partidas = Partida.getRanking();
+
+                                                    if (partidas != null) {
+                                                        for (Partida partida : partidas) {
+                                                %>
                                                 <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td><%= partida.getDataFormatada() %></td>
+                                                    <td><%= partida.getPontuacao() %></td>
+                                                    <td><%= partida.getPlayerName() %></td>
                                                 </tr>
+                                                <%
+                                                        }
+                                                    }
+                                                %>
+
                                             </tbody>
                                         </table>
                                     </div>
