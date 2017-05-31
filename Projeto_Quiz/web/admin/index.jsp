@@ -22,6 +22,11 @@
         <title></title>
     </head>
     <body>
+        <%
+            ArrayList<Usuario> jogadores = Usuario.all(2);
+            ArrayList<Usuario> administradores = Usuario.all(1);
+            ArrayList<Questao> questoes = Questao.all();
+        %>
         <%@include file="../WEB-INF/jspfs/protecaoAdmin.jspf" %>
         <div id="wrapper">
             <%@include file="../WEB-INF/jspfs/menuConjunto.jspf"%>
@@ -31,6 +36,12 @@
                         <div class="col-md-12">
                             <h2 class="text-center">Painel do Administrador</h2>   
                             <h5 class="text-center">Bem vindo, Admnistrador. </h5>
+                            <h4>Usuários</h4>
+                            <p>Há <%= jogadores.size() %> jogador(es) cadastrado(s) no site.</p>
+                            <p>Há <%= administradores.size() %> administrador(es) cadastrado(s) no site.</p>
+                            <p>Há <%= jogadores.size() + administradores.size() %> usuários cadastrados no site.</p>
+                            <h4>Questões</h4>
+                            <p>Há <%= questoes.size()%> questão(ões) cadastrada(s) no quiz. </p>
                         </div>
                     </div>              
                 </div>
