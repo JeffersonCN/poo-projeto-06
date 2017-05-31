@@ -28,7 +28,7 @@ CREATE TABLE alternativa (
 
 CREATE TABLE partida (
         id INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)
-    ,   dt_partida DATE NOT NULL DEFAULT CURRENT_DATE
+    ,   dt_partida TIMESTAMP NOT NULL
     ,   pontuacao INTEGER NOT NULL DEFAULT 0
     ,   usuario_id INT NOT NULL
     ,   CONSTRAINT fk_usuario_id FOREIGN KEY(usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
