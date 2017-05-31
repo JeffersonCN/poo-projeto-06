@@ -14,9 +14,9 @@
         <title>Gerenciar Usuários</title>
     </head>
     <body>
+        <%@include file="../../WEB-INF/jspfs/protecaoAdmin.jspf" %>
         <%
             request.setCharacterEncoding("utf-8");
-            HttpSession userSession = request.getSession();
 
             String mensagem = null;
             ArrayList<Usuario> usuarios = null;

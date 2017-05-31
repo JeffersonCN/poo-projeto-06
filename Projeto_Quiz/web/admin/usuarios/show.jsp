@@ -4,6 +4,7 @@
     Author     : jeffersoncn
 --%>
 
+<%@page import="br.com.fatecpg.helpers.ServerHelpers"%>
 <%@page import="com.fatecpg.data.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,19 +17,24 @@
         <h1>Usuário</h1>
         <%
             HttpSession userSession = request.getSession();
-            String mensagem = null;
+            Usuario adminLogado = (Usuario) userSession.getAttribute("usuarioLogado");
+            if (!ServerHelpers.isAdminLogged(adminLogado)) {
+                userSession.setAttribute("erro", "Acesso negado.");
+                response.sendRedirect(ServerHelpers.getRootPath(request) + "/index.jsp");
+            } else {
+                String mensagem = null;
 
-            Integer id = null;
-            try {
-                id = Integer.parseInt(request.getParameter("id"));
-            } catch (Exception e) {
-                mensagem = "ID informado é inválido.";
-            }
+                Integer id = null;
+                try {
+                    id = Integer.parseInt(request.getParameter("id"));
+                } catch (Exception e) {
+                    mensagem = "ID informado é inválido.";
+                }
 
-            if (id != null) {
-                Usuario usuario = Usuario.find(id);
+                if (id != null) {
+                    Usuario usuario = Usuario.find(id);
 
-                if (usuario != null) {
+                    if (usuario != null) {
         %>
         <p>
             Nome: <%= usuario.getNome()%><br>
@@ -36,9 +42,10 @@
             Perfil: <%= usuario.getPerfil().getDescricao()%>
         </p>
         <%
-                } else {
-                    userSession.setAttribute("mensagem", "Usuário não encontrado.");
-                    response.sendRedirect("index.jsp");
+                    } else {
+                        userSession.setAttribute("mensagem", "Usuário não encontrado.");
+                        response.sendRedirect("index.jsp");
+                    }
                 }
             }
         %>

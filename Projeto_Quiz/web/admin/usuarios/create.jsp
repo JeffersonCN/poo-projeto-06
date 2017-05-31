@@ -12,6 +12,7 @@
         <title>Quiz - Inserir Usuário</title>
     </head>
     <body>
+        <%@include file="../../WEB-INF/jspfs/protecaoAdmin.jspf" %>
         <form action="store.jsp" method="post">
             <h2>Inserir novo usuário</h2>
             <input type="radio" name="perfil" value="1"> Admin

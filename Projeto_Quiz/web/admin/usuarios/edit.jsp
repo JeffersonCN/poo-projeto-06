@@ -4,6 +4,7 @@
     Author     : jeffersoncn
 --%>
 
+<%@page import="br.com.fatecpg.helpers.ServerHelpers"%>
 <%@page import="com.fatecpg.data.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,6 +16,11 @@
     <body>
         <%
             HttpSession userSession = request.getSession();
+            Usuario adminLogado = (Usuario) userSession.getAttribute("usuarioLogado");
+            if (!ServerHelpers.isAdminLogged(adminLogado)) {
+                userSession.setAttribute("erro", "Acesso negado.");
+                response.sendRedirect(ServerHelpers.getRootPath(request) + "/index.jsp");
+            }
             String mensagem = null;
 
             Integer id = null;
@@ -36,14 +42,14 @@
         %>
         <form action="update.jsp" method="post">
             <h2>Alterar usuário</h2>
-            <input type="hidden" name="id" id="id" value="<%= usuario.getId() %>" />
-            <input type="radio" name="perfil" value="1" <%= usuario.getPerfilId() == 1 ? "checked" : "" %>> Admin
-            <input type="radio" name="perfil" value="2" <%= usuario.getPerfilId() == 2 ? "checked" : "" %>> Jogador
+            <input type="hidden" name="id" id="id" value="<%= usuario.getId()%>" />
+            <input type="radio" name="perfil" value="1" <%= usuario.getPerfilId() == 1 ? "checked" : ""%>> Admin
+            <input type="radio" name="perfil" value="2" <%= usuario.getPerfilId() == 2 ? "checked" : ""%>> Jogador
             <br>
             <br>
             <label for="txtNome">Nome Completo:</label>
             <br>
-            <input type="text" name="txtNome" id="txtNome" value="<%= usuario.getNome() %>"/>
+            <input type="text" name="txtNome" id="txtNome" value="<%= usuario.getNome()%>"/>
             <br>
             <label for="txtUsername">Username:</label>
             <br>
@@ -53,9 +59,10 @@
             <input type="submit" value="Alterar" />
         </form>
         <%
+                    }
+                } else {
+                    mensagem = "ID informado do usuário é inválido.";
                 }
-            } else {
-                mensagem = "ID informado do usuário é inválido.";
             }
 
         %>

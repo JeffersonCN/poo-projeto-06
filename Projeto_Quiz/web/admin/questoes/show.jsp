@@ -4,6 +4,8 @@
     Author     : jeffersoncn
 --%>
 
+<%@page import="br.com.fatecpg.helpers.ServerHelpers"%>
+<%@page import="com.fatecpg.data.Usuario"%>
 <%@page import="com.fatecpg.data.Alternativa"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.fatecpg.data.Questao"%>
@@ -17,8 +19,13 @@
     <body>
         <%
             HttpSession userSession = request.getSession();
+            Usuario adminLogado = (Usuario) userSession.getAttribute("usuarioLogado");
+            if (ServerHelpers.isAdminLogged(adminLogado) == false) {
+                userSession.setAttribute("erro", "Acesso negado.");
+                response.sendRedirect(ServerHelpers.getRootPath(request) + "/index.jsp");
+            } else{
             String mensagem = null;
-            
+
             Integer id = null;
             try {
                 id = Integer.parseInt(request.getParameter("id"));
@@ -63,6 +70,7 @@
                 userSession.setAttribute("mensagem", mensagem);
                 response.sendRedirect("index.jsp");
             }
+}
         %>
     </body>
 </html>

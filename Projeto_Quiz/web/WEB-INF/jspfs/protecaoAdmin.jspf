@@ -5,8 +5,8 @@
 <%
     HttpSession userSession = request.getSession();
     Usuario adminLogado = (Usuario) userSession.getAttribute("usuarioLogado");
-    if (ServerHelpers.isAdminLogged(adminLogado) == false) {
-        userSession.setAttribute("erro", "Tentativa acesso à página restrita.");
+    if (!ServerHelpers.isAdminLogged(adminLogado) ) {
+        userSession.setAttribute("erro", "Acesso negado.");
         response.sendRedirect(ServerHelpers.getRootPath(request) + "/index.jsp");
     }
 %>

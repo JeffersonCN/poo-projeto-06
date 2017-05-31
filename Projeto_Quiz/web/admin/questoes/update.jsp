@@ -4,6 +4,8 @@
     Author     : jeffersoncn
 --%>
 
+<%@page import="br.com.fatecpg.helpers.ServerHelpers"%>
+<%@page import="com.fatecpg.data.Usuario"%>
 <%@page import="com.fatecpg.data.Questao"%>
 <%@page import="com.fatecpg.data.Alternativa"%>
 <%@page import="java.util.ArrayList"%>
@@ -11,61 +13,68 @@
 <%
     request.setCharacterEncoding("utf-8");
     HttpSession userSession = request.getSession();
-    String mensagem = null;
+    Usuario adminLogado = (Usuario) userSession.getAttribute("usuarioLogado");
+    if (!ServerHelpers.isAdminLogged(adminLogado)) {
+        userSession.setAttribute("erro", "Acesso negado.");
+        response.sendRedirect(ServerHelpers.getRootPath(request) + "/index.jsp");
+    } else {
 
-    try {
-        Integer id = Integer.parseInt(request.getParameter("id"));
+        String mensagem = null;
 
         try {
-            Questao questao = Questao.find(id);
+            Integer id = Integer.parseInt(request.getParameter("id"));
 
-            String texto = request.getParameter("txtQuestao");
+            try {
+                Questao questao = Questao.find(id);
 
-            if (texto != null) {
-                questao.setTexto(texto);
-                
-                try {
-                    questao.update();
-                } catch (Exception e) {
-                    mensagem = "Erro: Não foi possível atualizar a questão.";
-                }
-            }
-            
-            String txtAlternativa = null;
-            Integer idCorreta = Integer.parseInt(request.getParameter("correta"));
-            ArrayList<Alternativa> alternativas = questao.getAlternativas();
-            int i = 0;
+                String texto = request.getParameter("txtQuestao");
 
-            for (Alternativa alternativa : alternativas) {
-                i = alternativas.indexOf(alternativa);
-                txtAlternativa = request.getParameter(String.format("alternativa[%d]", i));
-                
-                if (txtAlternativa != null) {
-                    alternativa.setTexto(txtAlternativa);
-                }
-                
-                if (idCorreta != null) {
-                    alternativa.setCorreta(idCorreta == i);
+                if (texto != null) {
+                    questao.setTexto(texto);
+
+                    try {
+                        questao.update();
+                    } catch (Exception e) {
+                        mensagem = "Erro: Não foi possível atualizar a questão.";
+                    }
                 }
 
-                try {
-                    alternativa.update();
-                } catch (Exception e) {
-                    mensagem = "Erro: Não foi possível atualizar a alternativa.";
+                String txtAlternativa = null;
+                Integer idCorreta = Integer.parseInt(request.getParameter("correta"));
+                ArrayList<Alternativa> alternativas = questao.getAlternativas();
+                int i = 0;
+
+                for (Alternativa alternativa : alternativas) {
+                    i = alternativas.indexOf(alternativa);
+                    txtAlternativa = request.getParameter(String.format("alternativa[%d]", i));
+
+                    if (txtAlternativa != null) {
+                        alternativa.setTexto(txtAlternativa);
+                    }
+
+                    if (idCorreta != null) {
+                        alternativa.setCorreta(idCorreta == i);
+                    }
+
+                    try {
+                        alternativa.update();
+                    } catch (Exception e) {
+                        mensagem = "Erro: Não foi possível atualizar a alternativa.";
+                    }
                 }
+            } catch (Exception e) {
+                mensagem = "Erro: Não foi possível consultar a Questão.";
             }
         } catch (Exception e) {
-            mensagem = "Erro: Não foi possível consultar a Questão.";
+            mensagem = "Erro: ID da Questão é inválido.";
         }
-    } catch (Exception e) {
-        mensagem = "Erro: ID da Questão é inválido.";
-    }
 
-    if (mensagem != null) {
-        userSession.setAttribute("mensagem", mensagem);
-    } else {
-        userSession.setAttribute("mensagem", "Questão alterada com sucesso!");
-    }
+        if (mensagem != null) {
+            userSession.setAttribute("mensagem", mensagem);
+        } else {
+            userSession.setAttribute("mensagem", "Questão alterada com sucesso!");
+        }
 
-    response.sendRedirect("index.jsp");
+        response.sendRedirect("index.jsp");
+    }
 %>

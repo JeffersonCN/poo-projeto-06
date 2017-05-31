@@ -16,6 +16,7 @@
         <title></title>
     </head>
     <body>
+        <%@include file="../../WEB-INF/jspfs/protecaoAdmin.jspf" %>
         <%@include file="../../WEB-INF/jspfs/menu.jspf" %>
         <div id="wrapper">
             <%@include file="../../WEB-INF/jspfs/menuLateral.jspf"%>

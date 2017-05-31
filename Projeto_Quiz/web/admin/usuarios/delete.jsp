@@ -4,10 +4,17 @@
     Author     : jeffersoncn
 --%>
 
+<%@page import="br.com.fatecpg.helpers.ServerHelpers"%>
 <%@page import="com.fatecpg.data.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession userSession = request.getSession();
+    Usuario adminLogado = (Usuario) userSession.getAttribute("usuarioLogado");
+    if (!ServerHelpers.isAdminLogged(adminLogado) ) {
+        userSession.setAttribute("erro", "Acesso negado.");
+        response.sendRedirect(ServerHelpers.getRootPath(request) + "/index.jsp");
+    } else{
+    
     String mensagem = null;
 
     Integer id = null;
@@ -33,5 +40,6 @@
 
     userSession.setAttribute("mensagem", mensagem);
     response.sendRedirect("index.jsp");
+    }
 %>
 <%--Identado--%>

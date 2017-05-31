@@ -4,6 +4,8 @@
     Author     : jeffersoncn
 --%>
 
+<%@page import="br.com.fatecpg.helpers.ServerHelpers"%>
+<%@page import="com.fatecpg.data.Usuario"%>
 <%@page import="com.fatecpg.data.Alternativa"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.fatecpg.data.Questao"%>
@@ -17,6 +19,11 @@
     <body>
         <%
             HttpSession userSession = request.getSession();
+            Usuario adminLogado = (Usuario) userSession.getAttribute("usuarioLogado");
+            if (ServerHelpers.isAdminLogged(adminLogado) == false) {
+                userSession.setAttribute("erro", "Acesso negado.");
+                response.sendRedirect(ServerHelpers.getRootPath(request) + "/index.jsp");
+            } else{
 
             try {
                 Integer id = Integer.parseInt(request.getParameter("id"));
@@ -29,7 +36,7 @@
             <h2>Editar questão</h2>
             <label for="txtQuestao">Questão:</label>
             <input type="text" name="txtQuestao" id="txtQuestao" value="<%=questao.getTexto()%>" />
-            <input type="hidden" name="id" value="<%= questao.getId() %>" />
+            <input type="hidden" name="id" value="<%= questao.getId()%>" />
             <h3>Alternativas</h3>
             <table border="1" style="border-collapse: collapse;">
                 <tr>
@@ -37,17 +44,17 @@
                     <th>Texto</th>
                     <th>Correta</th>
                 </tr>
-                <%  
+                <%
                     ArrayList<Alternativa> alternativas = questao.getAlternativas();
                     int i = 0;
                     for (Alternativa alternativa : alternativas) {
                         i = alternativas.indexOf(alternativa);
                 %>
-                    <tr>
-                        <td><%= i + 1 %>.</td>
-                        <td><input type="text" name="alternativa[<%=i%>]" id="alternativa[<%=i%>]" value="<%=alternativa.getTexto()%>"/></td>
-                        <td><input type="radio" name="correta" value="<%=i%>" <%= alternativa.isCorreta() ? "checked" : "" %>></td>
-                    </tr>
+                <tr>
+                    <td><%= i + 1%>.</td>
+                    <td><input type="text" name="alternativa[<%=i%>]" id="alternativa[<%=i%>]" value="<%=alternativa.getTexto()%>"/></td>
+                    <td><input type="radio" name="correta" value="<%=i%>" <%= alternativa.isCorreta() ? "checked" : ""%>></td>
+                </tr>
                 <%
                             }
 
@@ -59,6 +66,7 @@
                         userSession.setAttribute("mensagem", "ID da questão informado é inválido.");
                         response.sendRedirect("index.jsp");
                     }
+}
                 %>
             </table>
             <br>

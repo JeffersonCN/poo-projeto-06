@@ -13,6 +13,7 @@
     </head>
     <body>
         <%@include file="../../WEB-INF/jspfs/menu.jspf" %>
+        <%@include file="../../WEB-INF/jspfs/protecaoAdmin.jspf" %>
         <div id="wrapper">
             <%@include file="../../WEB-INF/jspfs/menuLateral.jspf"%>
             <div id="page-wrapper" class="container text-center">
