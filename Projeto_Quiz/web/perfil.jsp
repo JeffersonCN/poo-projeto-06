@@ -3,6 +3,8 @@
     Created on : 30/05/2017, 18:06:14
     Author     : Leonardo
 --%>
+<%@page import="com.fatecpg.data.Partida"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.fatecpg.data.Usuario"%>
 <!DOCTYPE html>
 <html>
@@ -16,9 +18,15 @@
         <%
             HttpSession userSession = request.getSession();
             Usuario usuario = (Usuario) userSession.getAttribute("usuarioLogado");
+            ArrayList<Partida> partidas = null;
             if (!ServerHelpers.isLogged(usuario)) {
                 response.sendRedirect("index.jsp");
-            } else{
+            } else {
+                try {
+                    partidas = usuario.getPartidas();
+                } catch (Exception e) {
+
+                }
 
         %>
         <div id="wrapper">
@@ -48,9 +56,20 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <%
+                                                    if (partidas != null) {
+                                                        for (Partida partida : partidas) {
+
+                                                %>
                                                 <tr>
-                                                    <!--CODIGO DE GERAR TABELA-->
+                                                    <td><%= partida.getPontuacao() %></td>
+                                                    <td><%= partida.getDataFormatada() %></td>
                                                 </tr>
+                                                <%
+                                                        }
+                                                    }
+                                                %>
+
                                             </tbody>
                                         </table>
                                     </div>
