@@ -5,6 +5,7 @@
     HttpSession userSession = request.getSession();
     Usuario usuarioLogado = (Usuario) userSession.getAttribute("usuarioLogado");
     if (!ServerHelpers.isLogged(usuarioLogado)) {
+        userSession.setAttribute("erro", "Acesso negado.");
         response.sendRedirect("index.jsp");
     }
 %>
