@@ -26,7 +26,7 @@ public class ServerHelpers {
     }
     
     public static boolean isAdminLogged(Usuario usuario){
-        if (usuario != null && usuario.getUsername().equals("admin")){
+        if (usuario != null && usuario.isAdmin()){
             return true;
         } else{
             return false;
