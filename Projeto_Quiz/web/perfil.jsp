@@ -16,10 +16,14 @@
         <%
             HttpSession userSession = request.getSession();
             Usuario usuario = (Usuario) userSession.getAttribute("usuarioLogado");
+            if (!ServerHelpers.isLogged(usuario)) {
+                response.sendRedirect("index.jsp");
+            } else{
+
         %>
         <div id="wrapper">
-            <%@include file="WEB-INF/jspfs/menu.jspf" %>
-            <div id="page-wrapper" class="container" >
+            <%@include file="WEB-INF/jspfs/menuConjunto.jspf" %>
+            <div id="page-wrapper" >
                 <div id="page-inner">
                     <div class="row">
                         <div class="col-md-12">
@@ -36,7 +40,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-striped table-bordered">
                                             <thead>
                                                 <tr>
                                                     <th>Pontuação</th>
@@ -60,5 +64,6 @@
         </div>
         <%@include file="WEB-INF/jspfs/modals.jspf" %>
         <%@include file="WEB-INF/jspfs/scripts.jspf" %>
+        <%}%>
     </body>
 </html>
